@@ -1,0 +1,15 @@
+//--Balloons1s.txt
+//Because these balloons all match in this template, this and the k versions are all just going to be copies of the first balloons0s.txt file. However, if you need to change these or any other settings for any of your individual balloons, feel free to do so!
+
+
+
+origin.x,27
+origin.y,32
+
+validrect.left,27
+validrect.top,32
+validrect.right,210
+validrect.bottom,188
+
+wordwrappoint.x,205
+wordwrappoint.y,0
