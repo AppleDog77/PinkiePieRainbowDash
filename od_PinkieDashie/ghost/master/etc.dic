@@ -729,3 +729,9 @@ OnShellScaling
 		"\0\s[0]Wee! We're now 50% our original size.\w8\1\s[10]My Little Pony. *wink*\e"
 	}
 }
+
+//This bit of code is what makes menu options that don't start with On direct to Select.options instead. Remove or comment it if you prefer!
+OnChoiceSelect
+{
+    EVAL("Select.%(reference0)")
+}

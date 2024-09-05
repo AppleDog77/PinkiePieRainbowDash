@@ -16,7 +16,7 @@ name,MLP Balloon
 //This is the name for your Balloon as defined in your balloon's descript.txt. Fill this in with the right name.
 
 
-directory,mlp
+directory,mlp_balloon_od
 
 //This is the directory your balloon will install to. Put the directory name of the folder you've been using for your balloon.
 //And that's it, done! Save and close and move on.

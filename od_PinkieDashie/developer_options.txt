@@ -1,1 +1,4 @@
-mlp/,noupdate
+mlp_balloon_od/,noupdate
+ghost/master/profile/,nonar,noupdate
+ghost/master/yaya_variable.cfg,nonar,noupdate
+shell/master/profile/,nonar,noupdate

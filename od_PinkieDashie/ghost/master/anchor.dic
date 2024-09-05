@@ -18,13 +18,20 @@
 OnTranslate
 	{
 	_talk = reference0
+	_talk = REPLACE(_talk, "Anchor 1", "\_a[anchor1]Anchor 1\_a")
+ 	_talk = REPLACE(_talk, "Anchor 2", "\_a[anchor2]Anchor 2\_a")
+ 	_talk = REPLACE(_talk, "Anchor 3", "\_a[anchor3]Anchor 3\_a")
 	
-		if reference1 == "" && reference2 == "" { //send input box : no event (ref2) , no special flag (ref1)
-            EVAL('"' + REPLACE(_talk,'"','" + CHR(0x22) + "') + '"')
-        }
-        else { //event result from ghost
-            TOSTR(_talk)
-        }
+	//This is the bit that runs embedded elements in script input
+	if reference1 == "" && reference2 == "" //If this is from script input
+		{
+		
+		EVAL('"' + REPLACE(_talk,'"','""') + '"')
+		}
+	else
+		{
+		TOSTR(_talk)
+		}
 	}
 	
 	//Some brief explanation about what's going on in those REPLACE lines! Basically, the function looks through the script and looks for a defined word or set of words. In this case, it's "Anchor 1". It then replaces "Anchor 1" with the second set of text, "\_a[anchor1]Anchor 1\_a". \_a if you recall is the dialogue code for linking something, so this is linking the words Anchor 1 to something called anchor1 set up in the next function, OnAnchorSelect.

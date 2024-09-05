@@ -56,7 +56,7 @@ MenuRun
 	"\![*]\q[Ask about life,livin]\n/
 	\![*]\q[Ask me anything,quiz]\n/
 	\![*]\q[Party Time,party]\n/
-	\![*]\q[Play a game,horsebets]\n\n[half]/
+	\![*]\q[Play games,OnHorseGames]\n\n[half]/
 	\![*]\q[Config Menu,configmenu]\n/
 	\![*]\q[Functions,dosomething]\n\n[half]/
  	\![*]\q[Nevermind,CANCEL]\n\n\n[half]%(wd) %(nowhour):%(nowmin) %(ap), %(month)/%(day)/%(year)\e"
@@ -77,7 +77,7 @@ Select.livin
 	
 	"\0\s[0]I've been throwing lots of parties and making others smile, as usual! \w8\1\s[10]And being part of the Wonderbolts has been awesome. \w8\0\s[0]\n\n[half]Also, check out the MLP comics for more of our adventures!\e"
 
-    "\1\s[10]A person recently talked about us on the UDT Discord! It was really awesome.\w8\0\s[0]Yeah! It was really cool! Made me grin when I saw it. I just love G3! So many fun, lovable, and funny characters and moments! Teehee! I highly recommend you give at least A Charming Birthday a watch.\w8\1\s[10]\n\n[half]Yeah! Although, ignore the G3 Rainbow Dash character, pl-\w5\0\s[0]\n\n[half]No need, silly!\e"
+    "\1\s[10]A person talked about us on the UDT Discord! It was really awesome.\w8\0\s[0]Yeah! It was really cool! Made me grin when I saw it. I just love G3! So many fun, lovable, and funny characters and moments! Teehee! I highly recommend you give at least A Charming Birthday a watch.\w8\1\s[10]\n\n[half]Yeah! Although, ignore the G3 Rainbow Dash character, pl-\w5\0\s[0]\n\n[half]No need, silly!\w8\1\s[10]\n\n[half]Aw nuts...\w8\0\s[0]\n\n[half]Rainbow Dash always dresses in style...\e"
 }
 
 Select.quiz
@@ -91,37 +91,31 @@ Select.quiz
 	
 Select.petans1
 {
-	petsyes = "true"
 	"\0\s[0]Hooray! I also love the %(pets).\e"
 }
 
 Select.petans2
 {
-	petsno = "true"
 	"\0\s[0]Aww, come on! Why not?\e"
 }
 
 Select.boltans1
 {
-	boltsyes = "true"
 	"\1\s[10]Cool! You should come and see us sometime.\e"
 }
 
 Select.boltans2
 {
-	boltsno = "true"
 	"\1\s[10]Uh, what?! Seriously? Come on! Maybe you should see us in action sometime; that'll change your mind!\e"
 }
 
 Select.sweetans1
 {
-	sweetsyes = "true"
 	"\0\s[0]Hooray! Sweets are really delicious! My favorite sweet treats are cupcakes and cookies.\e"
 }
 
 Select.sweetans2
 {
-	sweetsno = "true"
 	"\0\s[0]Aww, come on! Why not? Sweets are really delicious! Oh well.\e"
 }
 
@@ -132,12 +126,22 @@ Select.party
 	"\![*]\q[Me,OnAiTalk]\n\![*]\q[Other Ghost,OnStartTalking]\e" 
 }
 
+OnHorseGames
+{
+	"\_q\b2"
+	--
+	"\![*]\q[Pi Knowledge,OnDigitsOfPiStart]\n/
+	\![*]\q[Jumble Jam,OnWordJumble.Start]\n/
+	\![*]\q[Pink Tac Toe,OnTTT.Start]\n/
+	\![*]\q[Rock-Paper-Scissors,horsebets]\n\n[half]/
+ 	\![*]\q[Back,BACKTOMENU]\e"
+}
 //Game adapted from Chloe's Sam and Max ghost's Decision Maker ;)
 Select.horsebets
 {
 	"\![*]\q[Rules,laws]\n\n/
 	\![*]\q[Start,challenge]\n\n/
-	\![*]\q[Nevermind,BACKTOMENU]\e"
+	\![*]\q[Nevermind,OnHorseGames]\e"
 }
 
 Select.laws
@@ -665,7 +669,7 @@ Select.ChoiceGarbagecan
 	
 	if _gomicheck == 0 //If the recycle bin is empty.
 	{
-		"\0\s[0]Dashie, go check the recycle bin for our friend!\w8\1\s[10]Fine.\w8\w8\s[-1]\w8\w8\w8\w8\w8\1\s[10]\cAww, man! It's empty.\e"
+		"\0\s[0]Dashie, go check the recycle bin for our friend!\w8\1\s[10]Time to take out the adorable trash!\w8\w8\s[-1]\w8\w8\w8\w8\w8\1\s[10]\cAww, man! It's empty.\e"
 		
 		//This isn't the usual flat template dialogue, mostly because I wanted to show that this is a good place to use s[-1], which I covered in the walkthrough file. You can have your ghost disappear momentarily like they're going to check your recycle bin, then come back. \c clears the ghost's balloon of text. Replace dialogue as you desire.
 	}

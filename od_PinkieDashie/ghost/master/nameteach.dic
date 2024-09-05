@@ -100,7 +100,7 @@ OnNameTeach
 		"\![*] \q[Yes,titlechoose]\n \n[-100]\f[align,right]\![*] \q[No,OnNameDone,repeat]\n"
 	}
 	
-	elseif reference0 == "lauren" //If there is a name the ghost will simply accept
+	elseif reference0 == "lauren" || reference0 == "faust" || reference0 == "lauren faust" //If there is a name the ghost will simply accept
 	{
 		username = _tempname
 		

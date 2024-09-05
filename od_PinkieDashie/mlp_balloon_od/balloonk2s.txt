@@ -50,34 +50,34 @@ windowposition.y,0
 //Image Markers
 //Here's where we need to realign things properly for our big balloon.
 
-arrow0.x,221
+arrow0.x,215
 arrow0.y,34
 
-arrow1.x,221
+arrow1.x,215
 arrow1.y,311
 
 //The big changes here applied to the down arrow, arrow1. As you can see, the .y value is way different than with descript.txt, since the arrow is much lower.
 
 
 onlinemarker.x,28
-onlinemarker.y,341
+onlinemarker.y,320
 
-//Since 210 115 the bottom of our balloon is lower, again we'll need to adjust the y value. It's unlikely however that a ghost will have a big balloon up while checking something online, but you might as well be thorough.
+//Since the bottom of our balloon is lower, again we'll need to adjust the y value. It's unlikely however that a ghost will have a big balloon up while checking something online, but you might as well be thorough.
 
 
 sstpmarker.x,30
-sstpmarker.y,302
+sstpmarker.y,341
 
 //Adjusting placement...
 
 
 sstpmessage.x,40
-sstpmessage.y,302
+sstpmessage.y,341
 
 //Now the messages should take the big balloon into account.
 
 
-number.xr,282
+number.xr,220
 number.y,342
 
 //And again, much like the other elements, the y value has been changed here to reflect the longer box.

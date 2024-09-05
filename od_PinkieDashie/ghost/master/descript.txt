@@ -24,7 +24,7 @@ kero.name,Rainbow Dash
 
 craftman,odie
 craftmanw,Odie
-craftmanurl,https://odiesocean.wordpress.com/
+craftmanurl,https://appledog77.github.io
 
 
 //This is coding stuff, don't touch it.

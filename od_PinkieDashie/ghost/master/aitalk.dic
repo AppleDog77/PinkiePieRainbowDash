@@ -6,11 +6,11 @@
 //I will reiterate that you should be editing these in Notepad++, and in particular, you should set the Language to C (or Java I guess) to properly highlight all the text. It will make things A LOT EASIER for you, trust me! It will also help you keep track of your brackets in case you forget some. If you click on a line with a bracket in Notepad++, it should highlight where the other bracket ends, or turn purple if there's no finishing bracket (which you should definitely fix!)
 //It will also highlight my commented lines in green, so you'll know where they are. Any line beginning with // is a commented line that the code will not read. It's just for your reference!
 
-//--AiTalk
+//--OnAiTalk
 //Leave this alone.
 //Advanced users, this is mostly setting up whether or not dialogue is in a chain before it displays. Again, you can leave it alone unless you want to screw around with chains for some strange reason.
 
-AiTalk
+OnAiTalk
  {
 	if RAND(100) < communicateratio
  	{
@@ -119,7 +119,9 @@ RandomTalk : nonoverlap
 	
 	"\1\s[10]Pinkie's Fun Fact...\w8\0\s[0]%(envelope)\e"
 	
-	"\1\s[10]Pinkie's Announcement...\w8\0\s[0]The greatest show of all time is... %(shows2)!\e"
+	"\1\s[10]Pinkie's Announcement...\w8\0\s[0]The greatest show of all time is...\w8 %(shows2)!\e"
+
+	"\0\s[0]Announcement, announcement!\w4 The greatest show of all time is...\w8 %(shows2)!\e"
 	
 	"\1\s[10]What's your favorite food, Pinkie? Other than cupcakes, of course.\w8\0\s[0]%(food)! Yum!\e"
 	
@@ -657,16 +659,23 @@ OnSurfaceRestore
  
 OnKeyPress
 {
-	if reference0 == "t"
+	if DoP.Running == 1
 	{
-	OnAiTalk
+		DoP.Input(reference0)
 	}
-	elseif reference0 == "r"
-	{
-	OnLastTalk
-	}
-	elseif reference0 == "f1"
-	{
-	"\![open,readme]"
+	else
+	{	
+		if reference0 == "t"
+		{
+		OnAiTalk
+		}
+		elseif reference0 == "r"
+		{
+		OnLastTalk
+		}
+		elseif reference0 == "f1"
+		{	
+		"\![open,readme]"
+		}
 	}
 }
