@@ -1,0 +1,337 @@
+OnTranslate
+{
+	_talk = reference0
+	
+	//This is what makes %(embedded_elements) work in script input
+	if reference1 == "" && reference2 == "" //If this is from the input box
+	{ //send input box : no event (ref2) , no special flag (ref1)
+		_talk = EVAL('"' + REPLACE(_talk,'"','""') + '"')
+	}
+	
+	//If you want to add anything to OnTranslate, like text replacement, I would put it after this point, generally. Just make sure it's before the TOSTR(_talk)
+	
+	TOSTR(_talk)
+}
+
+//This is just here so you can use anchors to link to websites if you want. You can link to websites with normal menu choice tags! If you do, a handy URL preview will show up in the balloon!
+OnAnchorSelect
+{
+	if "http://" _in_ reference0 || "https://" _in_ reference0; "\j[""%(reference0)""]"
+}
+
+//Hotkeys
+OnKeyPress
+{
+	if reference0 == "f1"; "\![open,readme]"
+	elseif reference0 == "t"; OnAiTalk
+	elseif reference0 == "r"; OnLastTalk
+}
+//If you write all your word groups as lowercase, you can send them through this function whenever you need the first letter capitalized! It'd look something like this: "%(Capitalize(examplewordgroup))"
+Capitalize
+{
+	_first = SUBSTR(_argv[0],0,1)
+	_rest = ERASE(_argv[0],0,1) //Erase the first character and store everything else in _rest
+	TOUPPER(_first) + _rest
+}
+hour24
+{
+	if hour < 10; "0"
+	--
+	"%(hour)"
+}
+
+nowmin
+{
+	if minute < 10; "0"
+	--
+	"%(minute)"
+}
+
+ap
+{
+	if ampm; "PM"
+	else; "AM"
+}
+
+season
+{
+	if hemisphere == "Southern"
+	{
+		case month
+		{
+			when 3-5; "Autumn"
+			when 6-8; "Winter"
+			when 9-11; "Spring"
+			others; "Summer"
+		}
+	}
+	else
+	{
+		case month
+		{
+			when 3-5; "Spring"
+			when 6-8; "Summer"
+			when 9-11; "Autumn"
+			others; "Winter"
+		}
+	}
+}
+
+//Happens about 30 seconds after a script ends, by default, to bring them back to normal poses
+OnSurfaceRestore
+{
+	"\1\s[10]\0\s[0]"
+}
+
+//Happens when the ghost is unminimized. You *can* include dialogue, but you don't *have* to. I have included this event because if you don't, it defaults to \0\s[0]\1\s[10], which you don't want in some cases, such as if your ghost uses different surfaces or has a different number of characters.
+OnWindowStateRestore
+{
+	"\0\s[0]Oh! Hi again!\w8\1\s[10]Why'd you minimize us? No big deal though.\w8\0\s[0]\n\n[half]It was actually sorta comfy in there.\e"
+}
+
+OnGhostChanging
+ {
+	if reference0 == "Pinkie Pie"
+	{
+		"\0\s[0]Ahh, refreshing! Teehee.\w8\w8\e"
+	}
+ 	else
+	{
+		"\0\s[0]Say hi to %(reference0)!\w8\1\s[10]Bye for now!\w8\w8\e"
+	}
+}
+
+
+OnGhostChanged
+{
+	"\0\s[0]\1\s[10]"
+	--
+	if reference0 == "Pinkie Pie"
+	{
+		"\0\s[0]Refreshed.\1\w8\s[10]Ahhhh.\e"
+	}
+	else
+	{
+		"\1\s[10]Bye, %(reference0)!  Hope you're doing well!\w8\0\s[0]We're back!\e"
+	}
+}
+
+
+//Network update url. Make sure you have a / on the end of the url or it will give a warning every time users try to update! If you don't plan to use network updates you can remove this
+//IF YOU'RE USING GITHUB FOR NETWORK UPDATES: DO NOT USE github.io URLS! It will cause you pain and suffering. USE raw.githubusercontent!!!
+//To get the raw.githubusercontent link super easy:
+//• Open your ghost's repo online
+//• navigate to the ghost's folder (the top level one, with install.txt, readme.txt, etc)
+//• Click on install.txt, or another text file on that level
+//• Once on that page, click the "raw" button. You should see the url now starts with raw.githubusercontent
+//• Copy that url exactly as is, but *leave off the "install.txt" or whatever file name at the end.*
+//Tada! That's your url! Make sure you test it! The dev palette and script/network log can help with that
+On_homeurl
+{
+//	"https://ladybug-lane.neocities.org/downloads" <-- a real URL, but not one that'll update anything automatically. Go there for rare downloads and backup the original files anyway when translating though!
+//	"http://www.somekindofwebhost.com/yourghostsdirectory/nothappening.hmlt" kept for funnies
+// https://AppleDog77.github.io/AppleDog77.github.io/Updates/od_PinkieDashie/
+//"https://raw.githubusercontent.com/AppleDog77/AppleDog77.github.io/main/Updates/od_PinkieDashie/"
+"https://raw.githubusercontent.com/AppleDog77/PinkiePieRainbowDash/main/od_PinkieDashie/"
+}
+
+OnChoiceSelect
+{
+    EVAL("Select.%(reference0)")
+}
+
+
+//—————————————————————————————— Right click menu links ——————————————————————————————
+
+//Takes an array of alternating names and urls, and formats them for use with the right click menu
+FormatLinks : all
+{
+	for _i = 0; _i < ARRAYSIZE(_argv); _i++
+	{
+		_argv[_i] //Add the link/title
+		//Alternate between adding %ASC(1) or %ASC(2)
+		if _i % 2 == 1; "%ASC(2)"
+		else; "%ASC(1)"
+	}
+}
+
+On_sakura.recommendsites
+{
+	FormatLinks(recommendsites_sakura)
+}
+
+On_recommendrootbutton.caption
+ {
+	"Cool Sites By the Creator"
+}
+
+//These are the websites linked in the top option of the sakura's right click menu. The format is simple; write the label of the link on the left followed by a semicolon, and then on the right, the url to link to. These should be separate strings.
+recommendsites_sakura : array
+{
+	"Magic Lunar Petz";	"http://appledog77.github.io/" 
+	"Ladybug Lane"; "https://ladybug-lane.neocities.org/"
+	"Randomness Ahoy"; "https://randomnessahoy.nekoweb.org/"
+}
+
+On_portalrootbutton.caption
+ {
+	"Fun Sites"
+	"Must-Visit Sites"
+ }
+ 
+On_sakura.portalsites 
+{
+	FormatLinks(portalsites_sakura)
+}
+
+//These are the websites linked in the second option of the sakura's right click menu. Same as above
+portalsites_sakura : array
+{
+
+	"Ukagaka Dream Team Tumblr"; "https://ukagakadreamteam.tumblr.com/"
+
+	"The Almighty Guru"; "http://thealmightyguru.com/Index.html"
+
+	"Obscuritory"; "http://www.obscuritory.com/"
+
+	"Arachnoid"; "https://arachnoid.com/index.html"
+
+	"Lisaviolet's Diary"; "https://journal.lisaviolet.com/"
+
+	"FIMfiction (Fun!)"; "https://www.fimfiction.net/"	
+	
+	"Equestria Daily - MLP Stuff!"; "https://www.equestriadaily.com/"
+
+}
+
+On_kero.recommendsites
+{
+	FormatLinks(recommendsites_kero)
+}
+
+On_kero.recommendbuttoncaption
+ {
+	"Awesome Sites"
+ }
+ 
+//These are the websites linked in the first option of the kero's right click menu. Same as above
+recommendsites_kero : array
+{
+	"Flight Rising (Get Your Own Cool Dragon Pets For Free!)"; "http://www1.flightrising.com/"
+
+	"Topher's Castle - A Great Site for Everyone! (Inactive)"; "https://www.lavasurfer.com/index.html"
+
+	"Moondancer's Dream (G1 Site on Wayback Machine)"; "https://web.archive.org/web/20001018104642/http://www.moondancersdream.com/"
+
+	"Octodad: Dadliest Catch (cool game by the creators of the wonderful Bugsnax!)"; "https://octodad.com/"
+
+	"Home Is Where The Heart Is (a Wheatley blog)"; "https://the-wheatley-core.tumblr.com/post/183457981867/the-wheatley-core-hello-to-all-newcomers-of"
+
+	"Terrea (a great RP site which allows you to grow your own character from a blob!)"; "https://terrea.freeforums.net/"
+
+	"Skytopia (cool looking site with science info, awesome music, and various fun articles!)"; "https://www.skytopia.com/"
+}
+
+On_dressuprootbutton.caption
+{
+	"We don't have dress-ups... yet"
+}
+ 
+On_readmebutton.caption
+ {
+	"Please, please read me!"
+	"Pinkie Pie & Dashie Virtual Pets Manual"
+	"Rainbow Dash demands that you read this!"
+ }
+
+On_vanishbutton.caption
+ {
+	"Uninstall (Aww, come on!)"
+}
+On_shellrootbutton.caption
+ {
+	"Change Shell (Transform!)"
+}
+
+On_ghostrootbutton.caption
+ {
+	"Change Ghost (Say hi!)"
+}
+
+On_callghostrootbutton.caption
+ {
+	"Call Ghost (Ooh, new friends!)"
+}
+
+On_quitbutton.caption
+ {
+	"Quit (Bye bye!)"
+}
+
+
+//—————————————————————————————— User pronoun related ——————————————————————————————
+
+they
+{
+	if SHIORI3FW.UserSex == "male"; "he"
+	elseif SHIORI3FW.UserSex == "female"; "she"
+	else; "they"
+}
+
+them
+{
+	if SHIORI3FW.UserSex == "male"; "him"
+	elseif SHIORI3FW.UserSex == "female"; "her"
+	else; "them"
+}
+
+their
+{
+	if SHIORI3FW.UserSex == "male"; "his"
+	elseif SHIORI3FW.UserSex == "female"; "her"
+	else; "their"
+}
+
+theirs
+{
+	if SHIORI3FW.UserSex == "male"; "his"
+	elseif SHIORI3FW.UserSex == "female"; "hers"
+	else; "theirs"
+}
+
+themself
+{
+	if SHIORI3FW.UserSex == "male"; "himself"
+	elseif SHIORI3FW.UserSex == "female"; "herself"
+	else; "themself"
+}
+
+//%(they) %(p('are','is'))
+//You can change the name of this function if you want! I kept it short so it's fast to type
+p
+{
+	if SHIORI3FW.UserSex == "undef"; _argv[0] //they are
+	else; _argv[1] //he is/she is
+}
+
+/*
+
+An example of the above setup:
+"%(they) %(p('were','was')) looking for that earlier, I'll ask if %(they)'%(p('ve','s')) found it."
+
+If using they, the %(p) functions will return the first word specified, resulting in:
+"they were looking for that earlier, I'll ask if they've found it."
+
+If not using they, for example if using she, it will return the second specified word instead, resulting in:
+"she was looking for that earlier, I'll ask if she's found it."
+
+With this function, you can quickly customize words that need to change based on whether it should be singular or plural. Just remember; the %(p) function is set up so that the first word you specify matches with the 'they' labels used on the pronoun functions. You can always switch that around if you like, too.
+
+*/
+
+//This just makes %(username) match with the username determined by the SSP prefs, rather than having to use the %username environment variable which is *not* the same and which you can't do things like TOUPPER to.
+//If you want to have the user be able to set a nickname or something, you may want to change username to a variable instead and get rid of this!
+username
+{
+	SHIORI3FW.UserName
+}

@@ -1,0 +1,304 @@
+//This file handles a couple little QOL functions you may want, as well as default text for some events since SSP doesn't provide defaults. But these are not necessary! If you don't care for them just erase them. If you don't want to set up network updates, you can comment or remove the update functions too. If you're not interested in any of these, just remove the whole file!
+//If you are interested in expanding on these events, I've included links to their documentation in ukadoc for easy reference
+
+//—————————————————————————————— Installing something ——————————————————————————————
+//https://ukagakadreamteam.github.io/ukadoc/manual/list_shiori_event.html#OnInstallBegin
+
+OnInstallComplete
+{
+	"\0\s[0]Hi, new friend! Welcome to your new home.\w8\1s[10]Their name is %(reference1) (%(reference0)). Hey there!"
+	--
+	//A little menu to open or change to the ghost that was installed immediately
+	if "ghost" _in_ reference0
+	{
+		"\n\n\_q"
+		--
+		"\![*]\__q[OnInstallComplete.Action,call]Call %(reference0)\__q  \![*]\__q[OnInstallComplete.Action,change]Change to %(reference0)\__q\n\n"
+		--
+		"\![*]\q[Thank you,blank]"
+	}
+}
+
+OnInstallComplete.Action
+{
+	if reference0 == "change"
+	{
+		"\![change,ghost,lastinstalled]"
+	}
+	else //call
+	{
+		"\![call,ghost,lastinstalled]"
+	}
+}
+
+OnInstallFailure
+{
+	_reason = reference0
+	case reference0
+	{
+		when "unlha32"; _reason = "could not load the dll to decompress lzh files"
+		when "extraction"; _reason = "failed to decompress the file"
+		when "invalid type"; _reason = "the install.txt is incorrect"
+		when "unsupported"; _reason = "the archive is not supported"
+		when "password"; _reason = "incorrect password"
+		when "artificial"; _reason = "canceled by user"
+	}
+	
+	"\0\s[0]Aww man! We could not complete the installation: %(_reason)!"
+}
+
+
+//—————————————————————————————— Creating a .nar file ——————————————————————————————
+//https://ukagakadreamteam.github.io/ukadoc/manual/list_shiori_event.html#OnNarCreating
+
+OnNarCreated
+{
+	//Makes a clickable link that'll open the location of the file they just made
+	_nar = "\_a[OnNarLocation,""%(reference1)""]%(reference0)\_a"
+	
+	"\0\s[0]Successfully created our beautiful %(_nar)!"
+}
+
+OnNarLocation
+{	
+	_path = SPLITPATH(reference0)[0] + SPLITPATH(reference0)[1]
+	
+	"\![open,file,""%(_path)""]"
+}
+
+
+//—————————————————————————————— Network Update ——————————————————————————————
+//https://ukagakadreamteam.github.io/ukadoc/manual/list_shiori_event.html#OnUpdateBegin
+
+OnUpdateBegin
+{
+	"\0\s[0]Starting updates! Weeeee!\w8"
+	"\1\s[10]Let's update!\w8"
+}
+
+//reference0 is the number of new files, starting from 0
+OnUpdateReady
+{
+	reference0++ //Number of files starts from 0, so this displays the correct amount
+	
+	//plural checks, adds an s and changes is to are if there's more than 1 file
+	_s = ""; _are = "is"
+	if reference0 != 1; {_s = "s"; _are = "are"}
+	
+	"\0\s[0]There %(_are) %(reference0) new file%(_s). Ooh!\w8"
+}
+
+//When the update finishes. Don't forget to initialize any new variables you've created! I highly highly recommend using OnInitialize for this (it's in boot.dic), in case the user updates via the ghost explorer or some other means.
+//reference0 is 'none' if there were no new files to update with
+OnUpdateComplete
+{
+	if reference0 == "none"
+	{
+		"\1\s[10]Aww, man! No new updates..."
+	}
+	else
+	{
+		"\0\s[0]Update successful! Woohoo!\e"
+	}
+}
+
+OnUpdateFailure
+{	
+	_file = SPLITPATH(reference1)[2] + SPLITPATH(reference1)[3] //For MD5 errors, this gets the name and extension of the offending file
+	_reason = reference0
+	case reference0
+	{
+		when "timeout"; _reason = "connection timed out! Grr.."
+		when "md5 miss"; _reason = "MD5 error on file %(_file)\n\nPlease contact our author, Odie, for assistance"
+		when "artificial"; _reason = "canceled by user"
+	}
+	"\0\s[0]Could not update: %(_reason)."
+}
+
+
+//—————————————————————————————— SNTP (clock fixing) ——————————————————————————————
+//https://ukagakadreamteam.github.io/ukadoc/manual/list_shiori_event.html#OnSNTPBegin
+
+OnSNTPCompare
+{
+	if reference3 != 0
+	{
+		_s = ""; if reference3 != 1; _s = "s"
+		
+		"\0\s[0]Aww, Clocky's off by %(reference3) second%(_s).\n\n"
+		--
+		"\![*]\q[Fix it,script:\6]  \![*]\q[Leave it,blank]"
+	}
+	else
+	{
+		"\0\s[0]Clocky's accurate! Weeeeeeeeeee!"
+	}
+}
+
+OnSNTPCorrect
+{
+	"\0\s[0]Clocky has been corrected. Hoorah!"
+}
+
+OnSNTPFailure
+{
+	"\0\s[0]Could not correct Clocky! Aww, come on!\w8\1\s[10]Something crapped out."
+}
+
+
+//—————————————————————————————— BIFF (Email check) ———————————————————————————————
+//https://ukagakadreamteam.github.io/ukadoc/manual/list_shiori_event.html#OnBIFFBegin
+
+OnBIFFBegin
+ {
+	"\0\s[0]I'll take Strong Bad Emails for a thousand, please.\e"
+	
+	"\1\s[10]I got the email, you got the email, I got the email, you got the email.\e"
+	
+	"\0\s[0]Let's check a Strong Bad Email, you and me.\w8 Together.\w8 Like we used to.\w8 Like a family.\e"
+	
+	"\1\s[10]If I can't check my email, then how I'm supposed to live my life?\e"
+	
+	"\1\s[10]You got to email, just to stay alive!\e"
+	
+	"\1\s[10]I've been walkin' on clouds and flippin' off rainbows, on the wings of an email.\e"
+	
+	"\0\s[0]Oh oh, email's in the backyard, makin' some stew...\e"
+	
+	"\0\s[0]OK, orchestra, hit it! Email me tonight!\e"
+	
+	"\0\s[0]Ahh...\w8 so many emails, so little good emails.\e"
+
+	"\1\s[10]I'm intrigued by these... \w8how you say... \w8emails.\e"
+ }
+
+OnBIFFComplete
+ {
+	if reference0 == 0 //If you have no new mail.
+ 	{
+ 		"\0\s[0]Aww, no new emails!\e"
+	}
+	elseif reference0 == 1 //If you have one new email.
+ 	{
+ 		"\0\s[0]One new email to read! Weeee!\e"
+	}
+	elseif reference0 > 1 && reference0 < 11 //If you have more than one email but less than eleven.
+	{
+		"\0\s[0]Some new emails to see! %(reference0) emails!\e"
+	}
+	elseif reference0 > 100 //If there are over one hundred new emails.
+	{
+		"\0\s[0]There are %(reference0) emails unread. What a lotta emails!\w8\1\s[10]Woah.\e"
+	}
+ 	else //For any other number of emails.
+	{
+		"\0\s[0]There are %(reference0) emails! Yay!\e"
+ 	}
+}
+
+OnBIFFFailure
+{
+	_reason = reference0
+	case reference0
+	{
+		when "timeout"; _reason = "connection timed out"
+		when "kick"; _reason = "can't access account.  Let us in by your chinny chin chin"
+		when "defect"; _reason = "POP settings incorrect"
+		when "artificial"; _reason = "canceled by user"
+	}
+
+	"\0\s[0]Could not get emails: %(_reason)! *growls*"
+}
+
+
+//———————————————————————————————— Headlines/RSS ——————————————————————————————————
+//https://ukagakadreamteam.github.io/ukadoc/manual/list_shiori_event.html#OnHeadlinesenseBegin
+
+OnHeadlinesenseFailure
+{
+	_reason = reference0
+	case reference0
+	{
+		when "can't download"; _reason = "can't download the file"
+		when "can't analyze"; _reason = "can't analyze the file"
+	}
+
+	"\0\s[0]Could not get RSS: %(_reason)."
+}
+
+//Other Stuff
+OnScreenSaverEnd
+ {
+	"\0\s[0]Aww, come on! The screensaver is gone.\w7\1\s[10]Aw nuts!\e"
+ } 
+ 
+OnShellScaling
+{
+	if reference0 >= 150 //this number is the percentage that you're scaling the ghost up to. In this case, it's 150%.
+	{
+		"\0\s[0]Ooh! We're now 150% our original size.\w8\1\s[10]My Giant Pony?\e"
+	}
+	elseif reference0 == 100 //this is 100%
+	{
+		"\1\s[10]We're back to our normal size!\e"
+	}
+	elseif reference0 == 50 //this is 50%. You can add any percentage that's listed under shell scaling if you want using more elseifs.
+	{
+		"\0\s[0]Wee! We're now 50% our original size.\w8\1\s[10]My Little Pony. *wink*\e"
+	}
+}
+
+OnFileDrop2
+{
+	_filepath = SPLITPATH(reference0)
+	_filename = _filepath[2]
+	_fileext = TOLOWER(_filepath[3])
+	case _fileext
+	{
+		when ".jpg", ".jpeg", ".bmp", ".gif", ".png" //These are the formats your ghost will recognize as image files to set as the background.
+		{
+			Wallpaperfile = reference0
+			
+			"\0\s[0]Ooh, you dropped this file: %(_filename)%(_fileext)!\w8\1\s[10]How would you like us to set this pic as your wallpaper? We recommend the almighty PNG file format BTW, but you can use any you wanna!\n\n[half]/
+			\q[Centered,SetWallpaper_0]\n/
+			\q[Tiled,SetWallpaper_1]\n/
+			\q[Stretched,SetWallpaper_2]\n\n[half]/
+			\q[No thanks,SetWallpaper_Cancel]\e"
+		}
+		when ".mid", ".wav", ".mp3", ".wma", ".au" //Other file formats you might want to give your ghost a specific response to.
+		{
+			"\1\s[10]%(_filename)%(_fileext)! Aw yeah! That's my favorite song!\e"
+		}
+		when ".xcf", ".kra", ".psd", ".mdp"
+		{
+			"\0\s[0]Ooh, is this yours?\w8\1\s[10]Pretty awesome, %(username)!\e"
+			"\0\s[0]Ooh, this is your art?\w8\1\s[10]Cool!\e"
+			"\0\s[0]Wow, wonderful art!\w8\1\s[10]Yeah!\e"
+			"\0\s[0]Cool, an art file! It looks amazing!\w8\1\s[10]Yep!\e"
+			"\0\s[0]Yay, a drawing!\w8\1\s[10]Great art, %(username)! Keep on keepin' on!\e"
+		}
+		others //Any other file format. As a note here, if you drop something ghost-related on them that does not have an install.txt, then they won't install it and will just say this response. If you are testing your balloon or nar files and you get this response instead of a proper installation, you should check and make sure you have an install.txt in the file!
+		{
+			"\0\s[0]Ooh! This is %(_filename)%(_fileext).\w8\1\s[10]Nice!\e"
+		}
+	}
+}
+
+//This set of options sets the wallpaper up. You can replace the dialogue, but make sure to leave the \![set,wallpaper, etc.] tag at the beginning.
+
+Select.SetWallpaper_0
+{
+	"\![set,wallpaper,%(Wallpaperfile),center]\0\s[0]Center it!\e"
+}
+Select.SetWallpaper_1
+{
+	"\![set,wallpaper,%(Wallpaperfile),tile]\0\s[0]Tiles? Oh boy!\e"
+}
+Select.SetWallpaper_2
+{
+	"\![set,wallpaper,%(Wallpaperfile),stretch]\0\s[0]Streeeeetchy!\e"
+}
+Select.SetWallpaper_Cancel
+{
+	"\0\s[0]Aww, come on! You don't wanna set the file as your desktop background. Why not?\w8\1\s[10]Oh well.\e"
+}

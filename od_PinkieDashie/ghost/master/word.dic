@@ -1,22 +1,4 @@
-﻿//---------------------------Envelopes--------------------------
-//This .dic file is probably one of the simplest you will have to edit, and in fact, if the way it works doesn't appeal to you, you can completely ignore it if you like!
-//Basically, what this file does is set up certain things that I believe are called envelopes or SakuraScriptEnv on the CROW-SSP Dictionary site (which I link to a few times throughout the walkthrough), but I've always kind of thought of them as variables. Envelopes is probably a less confusing name though.
-//Essentially, what this file is for is for creating lists populated with items, and storing them in a word that can later be called during dialogue. If you've read the walkthrough or gone through any of the other .dic files, you've probably seen these before. They are always preceded with a % sign and have a word in parentheses (well, almost always) afterwards. %(username) is one, which displays the user's name, and %(heshe) is another, which displays the right pronoun depending on what the user selected in bootend.dic or menu.dic. Other ones you might not have seen include %(passmin), which shows how many minutes have passed since the ghost was started, %(screenheight) which shows the height of the display they're currently on, and %(keroname) for the name of the second character, among many, many others. Many of these are predefined by the AYA scripting and will be listed on the CROW-SSP site mentioned above, and many of them you will never have to use. By far the ones you will be using the most will be %(username) and the pronoun ones, and those are the only ones you'll have to worry about normally.
-
-//So where does this file come in? Well, you can define your own envelopes if you want! Which means essentially that you can create a list of items and attach it to almost any word you want. Here's an example.
-
-ghibli
-{
-	"Kiki’s Delivery Service"
-	"My Neighbor Totoro"
-	"Spirited Away"
-}
-
-//As you can see, we stated a word, opened some brackets, wrote some text, and closed the brackets. Now when you write ghost dialogue, you can write %(exampleenvelope) and your ghost will randomly display any of the three bits of text within the brackets! You can go ahead and test this yourself to see how it works, and I'll include some sample dialogue with this in aitalk.dic.
-//Note: Do not put commas in your list entries unless you're doing a double envelope as detailed further below.
-
-//Now, what is the actual use of these envelopes? You can store tons of random information in any kind of envelope you want to keep your ghost's dialogue varied! You can store various cities you like in %(city), musicians you like in %(musicians), places your ghost has been in %(places), food you like in %(food), movies you like in %(movie), fandoms you like in %(fandom), characters you like in %(fandomcharacter), celebrities you like under %(celebrity) or friends of yours in %(friends) or bnfs in %(bnfs), folders on your computer under %(folders), Pokemon you like under %(pokemon), insults under %(insult), swear words under %(swearword) which could potentially be hilarious, just about anything! You can make lists of absolutely anything to use with dialogue for your ghost! This .dic file is only limited by your imagination!
-//Not only that, but you can put an envelope IN an envelope. Here's another example.
+//Odie: It has given me way too much ideas... ;)
 
 envelope
 {
@@ -24,12 +6,16 @@ envelope
 	"%(username)'s computer is cool!"
 	"My favorite We Bare Bears character is %(wbbcharacter)."
 	"%(pokemon) is the best."
-	"The greatest show of all time is... %(shows2)!"
+	"The greatest show of all time is... %(shows)!"
 	"I highly recommend you watch %(movies)!"
 }
 
-//So you see, you can even nest envelopes if you want! This is particularly handy with %(username), so your ghost can be specific if they're talking about something of the user's, like their files or folders for example. I'll leave a few lists in here you can fill out as you like. And if this doesn't give you ideas, you can ignore this file, since nothing in it will show up unless you write it into the dialogue. You can add or take away as many items as you want from each list.
-//Odie: It has given me way too much ideas... ;)
+ghibli
+{
+	"Kiki’s Delivery Service"
+	"My Neighbor Totoro"
+	"Spirited Away"
+}
 
 movies
 {
@@ -80,6 +66,7 @@ movies
 	"Madagascar 2"
 	"Madagascar 3"
 	"The Penguins of Madagascar movie"
+	"The Simpsons Movie"
 	"Antz"
 	"Monsters, Inc."
 	"The Incredibles"
@@ -143,6 +130,41 @@ movies
 	"An Extremely Goofy Movie"
 }
 
+games
+{
+	"Zoo Tycoon"
+	"Rollercoaster Tycoon"
+	"Reader Rabbit"
+	"Portal"
+	"Half-Life"
+	"The Stanley Parable"
+	"Professor Layton"
+	"Lemmings"
+	"Need for Speed"
+	"Animal Crossing"
+	"Harvest Moon"
+	"Fish Tycoon"
+	"Plant Tycoon"
+	"Freddi Fish"
+	"Spy Fox"
+	"Putt Putt"
+	"Pajama Sam"
+	"Peggle"
+	"Re-Volt"
+	"The Sims"
+	"Sam & Max"
+	"Strong Bad's Cool Game for Attractive People"
+	"Wallace & Gromit's Grand Adventures"
+	"Pokémon"
+}
+gamesresponses
+{
+	"Great choice! That's my favorite too!"
+	"Woohoo! I love that game's graphics."
+	"I disagree. Sorry... Nah, just kidding!"
+	"That's a silly game... Nopey-dopey, just pulling your leg!"
+}
+
 wbbcharacter
 {
 	"Grizz"
@@ -154,11 +176,15 @@ food
 {
 	"Bananas"
 	"Apples"
+	"Oranges"
 	"Lemons"
 	"Honey"
+	"Mangoes"
+	"Ice Cream"
 	"Brownies"
 	"Pies"
 	"Cakes"
+	"Donuts"
 	"Chocolate"
 	"Carrots"
 	"Raspberries"
@@ -167,6 +193,20 @@ food
 	"Cherrychangas"
 }
 
+colors
+{
+	"green"
+	"red"
+	"purple"
+	"violet"
+	"orange"
+	"blue"
+	"indigo"
+	"brown"
+	"pink"
+	"yellow"
+	"magenta"
+}
 pets
 {
 	"Cat"
@@ -316,63 +356,7 @@ dragon
 	"Toothless"
 }
 
-shows1 //for shows with more than one season
-{
-	"My Little Pony: Friendship is Magic"
-	"Littlest Pet Shop"
-	"Bluey"
-	"Martha Speaks"
-	"Amphibia"
-	"The Owl House"
-	"Gravity Falls"
-	"Adventure Time"
-	"Avatar: The Last Airbender"
-	"Arthur"
-	"Phineas and Ferb"
-	"We Bare Bears"
-	"Chowder"
-	"Foster's Home for Imaginary Friends"
-	"She-Ra and the Princesses of Power"
-	"Kipo and the Age of Wonderbeasts"
-	"Carmen Sandiego"
-	"Barbie: Life in the Dreamhouse"
-	"Garfield and Friends"
-	"The Garfield Show"
-	"Tiny Toon Adventures"
-	"Animaniacs"
-	"Invader Zim"
-	"Hilda"
-	"Steven Universe"
-	"Babar"
-	"The Magic Adventures of Mumfie"
-	"The Penguins of Madagascar"
-	"All Hail King Julien"
-	"The New Adventures of Winnie the Pooh"
-	"DuckTales"
-	"Miss Spider's Sunny Patch Friends"
-	"The Angry Beavers"
-	"Viva Pinata"
-	"Mr. Bean"
-	"Blackadder"
-	"Paddington"
-	"Clifford the Big Red Dog"
-	"Kenny the Shark"
-	"Brandy & Mr. Whiskers"
-	"Lilo & Stitch: The Series"
-	"Monty Python's Flying Circus"
-	"Shaun the Sheep"
-	"Scooby-Doo! Mystery, Inc."
-	"Dexter's Laboratory"
-	"Elena of Avalor"
-	"Sofia the First"
-	"Rapunzel's Tangled Adventure"
-	"Big Hero 6: The Series"
-	"Infinity Train"
-	"Kikoriki"
-	"Green Eggs and Ham"
-}
-
-shows2 //for all shows
+shows
 {
 	"My Little Pony: Friendship is Magic"
 	"My Little Pony: Make Your Mark"
@@ -398,6 +382,7 @@ shows2 //for all shows
 	"Tiny Toon Adventures"
 	"Animaniacs"
 	"Invader Zim"
+	"The Simpsons"
 	"Hilda"
 	"Steven Universe"
 	"Babar"
@@ -430,8 +415,12 @@ shows2 //for all shows
 	"Over the Garden Wall"
 	"Green Eggs and Ham"
 }
-//This envelope in particular I think is fun. You can use this in dialogue to pretend like your ghost is looking through your user's files!
-
+showsresponses
+{
+	"Awesome! That's my favorite too!"
+	"Woo! I especially liked episode six of season two."
+	"That's a lame show. Sorry... Nah, just kidding!"
+}
 usersfolder
 {
 	"%(username)'s Recycle Bin"
@@ -462,17 +451,6 @@ fourthwall
 	"word"
 }
 
-//Now, this next envelope is unique. I'm just going to leave it the way that cindysuke wrote it, but look carefully. This list has TWO values, separated by a comma. You can see the first is the Korean word, and the second is the definition of the word. This is used for a bit of dialogue cindysuke wrote where their ghost would teach the user a word in Korean. 
-//You can set up double envelopes like this too by following this format! However, it does require a bit of fancier coding in aitalk to get it to work right. I'll leave an example of it in aitalk so you can study it.
-//lessonkor
-//{
-//	"사과(sa-gua),apple"
-//	"노동(no-dong),labor"
-//	"손가락(son-ga-rak),finger"
-//	"마르크스(ma-r-k-s),Marx"
-//	"자본주의(ja-bon-ju-yi),capitalism"
-//}
-
 winxp
 {
 	"Odyssey,first for home users"
@@ -481,792 +459,7 @@ winxp
 	"XP,final for home and business users"
 }
 
-//You can also format your envelopes like this as one line separated by semicolons, but personally I think the spaced lists above look nicer. It's up to you however you want to set them up.
-
 donks
 {
 	"Donkey"; "Eeyore"; "Swanky"; "Damru"; "all donkeys";
-}
-
-//The function below is made by Zi!
-
-Slow
-{
-    _output = ""
-    _p = ""
-    if _argv[2] == "1" //If it's a precision \_w tag
-    {
-        _p = "\_w[" + _argv[1] + "]"
-    }
-    else //Simple \w tag
-    {
-        _p = "\w" + _argv[1]
-    }
-    for _i = 0; _i < STRLEN(_argv[0]); _i++
-    {
-        _output += "%(SUBSTR(_argv[0],_i,1))%(_p)"
-    }
-    _output
-}
-//Games by Zi! https://ukagaka.zichqec.com/
-
-//Call this event to initialize the game variables and start the game
-OnDigitsOfPiStart
-{
-	DoP.StartVars
-	DoP.Display
-}
-
-//These two functions update various variables when starting and ending the game
-DoP.StartVars
-{
-	DoP.Running = 1
-	DoP.Index = 0
-	DoP.Time = (GETSECCOUNT,GETSECCOUNT)
-}
-
-DoP.EndVars
-{
-	DoP.Time[1] = GETSECCOUNT
-	DoP.Running = 0
-}
-
-//Input checking. The main logic of the game is here.
-DoP.Input : all
-{
-	_input = _argv[0]
-	
-	//This handles an edge case where the user skips typing the decimal point and goes straight into the other numbers. This adds the decimal point automatically in that case, as a QOL feature
-	if DoP.Index == 1 && _input == "1"
-	{
-		DoP.Index += 2
-		DoP.Display
-	}
-	elseif _input == SUBSTR(DoP.PiString,DoP.Index,1) //Correct guess
-	{
-		DoP.Index++
-		
-		//No more digits left, aka winning the game (only likely to come up if you make it a reasonable number of digits...)
-		if DoP.Index >= STRLEN(DoP.PiString)
-		{
-			DoP.EndVars
-			_s = "s"; if DoP.Count == 1; _s = ""
-			
-			"\0\s[0]\b[0]WOW! That's amazing!\w8 Even I can't count that high, I usually get distracted by something, like a butterfly! Ooh, that rhymed! Anyway,\w8 looks like you got all %(DoP.Count) digit%(_s) of Pi that I know perfectly, in %(DoP.TimeInWords)!"
-			"\_q\n\n\![*]\q[Play again,OnDigitsOfPiStart]  \![*]\q[Done,blank]"
-		}
-		else
-		{
-			DoP.Display
-		}
-	}
-	else //Incorrect guess, lost the game
-	{
-		DoP.EndVars
-		_s = "s"; if DoP.Count == 1; _s = ""
-		
-		"\0\s[0]\b[0]Aww, that's incorrect! You put %(_input), but the correct answer was %(SUBSTR(DoP.PiString,DoP.Index,1)).\n\w8At least you got %(DoP.Count) digit%(_s) correct in %(DoP.TimeInWords)!"
-		"\_q\n\n\![*]\q[Play again,OnDigitsOfPiStart]  \![*]\q[Done,blank]"
-	}
-}
-
-//Main game display. \* makes it not time out
-DoP.Display : all
-{
-	"\C\![lock,balloonrepaint]\c" //This and the bottom line are to prevent flicker. You may need to remove it if it conflicts with your ghost's setup
-	"\0\s[0]\b[0]\*\_q"
-	
-	"Ooh! This one is fun!\w8 I know a lot about my favorite number Pi, as I'm Pinkie Pie! Teeheehee!\w8 Type as many digits of Pi as you know!\n\n"
-	
-	SUBSTR(DoP.PiString,0,DoP.Index)
-	"\n\n\![*]\q[Quit,OnQuitDoP]"
-	"\![unlock,balloonrepaint]"
-}
-
-//Quitting the game
-OnQuitDoP : all
-{
-	DoP.EndVars
-	_s = "s"; if DoP.Count == 1; _s = ""
-	
-	"\0\s[0]\b[0]Alrighty then! You got %(DoP.Count) digit%(_s) correct, in %(DoP.TimeInWords)."
-	"\_q\n\n\![*]\q[Play again,OnDigitsOfPiStart]  \![*]\q[Done,blank]"
-}
-
-//The number of digits the user successfully guessed, not counting the decimal point as a digit
-DoP.Count
-{
-	if DoP.Index > 1; DoP.Index - 1
-	else; DoP.Index
-}
-
-//Returns the total time the user played for in seconds
-DoP.TotalTime
-{
-	DoP.Time[1] - DoP.Time[0]
-}
-
-//Takes the total time in seconds and makes it into a more natural word display
-DoP.TimeInWords
-{
-	DoP.TimeInWordsCalc(DoP.TotalTime)
-}
-
-DoP.TimeInWordsCalc
-{
-	_num = TOINT(_argv[0])
-	if _num < 0; {"0 seconds"; return}
-	
-	//Singular form, plural form, number of seconds
-	_units = ( /
-	"hour,hours,3600",/
-	"minute,minutes,60",/
-	"second,seconds,1"/
-	)
-	
-	_output = ""
-	foreach _units; _unit
-	{
-		_duration = TOINT(_unit[2])
-		_amt = _num / _duration
-		_num = _num % _duration
-		
-		if _amt > 0
-		{
-			if _output != ""
-			{
-				if _unit[0] == "second"
-				{
-					if "," _in_ _output; _output += ","
-					_output += " and "
-				}
-				else; _output += ", "
-			}
-			
-			//The second function call here handles whether the unit name should be displayed as plural or not, depending on if the amount of that unit is greater than 1
-			_output += "%(_amt) %(_unit[_amt > 1])"
-		}
-		if _num <= 0; break
-	}
-	_output
-}
-
-//Obtained from https://www.damienelliott.com/1-million-digits-of-pi-%cf%80-ready-to-copy-and-paste/ ... but only the first 10000 (plus the decimal point), which is already unreasonably many lol
-//This could theoretically be any string you wanted. If you want it to be a winable game, go ahead and trim the number of digits to a more reasonable amount
-DoP.PiString
-{
-	"3.141592653589793238462643383279502884197169399375105820974944592307816406286208998628034825342117067982148086513282306647093844609550582231725359408128481117450284102701938521105559644622948954930381964428810975665933446128475648233786783165271201909145648566923460348610454326648213393607260249141273724587006606315588174881520920962829254091715364367892590360011330530548820466521384146951941511609433057270365759591953092186117381932611793105118548074462379962749567351885752724891227938183011949129833673362440656643086021394946395224737190702179860943702770539217176293176752384674818467669405132000568127145263560827785771342757789609173637178721468440901224953430146549585371050792279689258923542019956112129021960864034418159813629774771309960518707211349999998372978049951059731732816096318595024459455346908302642522308253344685035261931188171010003137838752886587533208381420617177669147303598253490428755468731159562863882353787593751957781857780532171226806613001927876611195909216420198938095257201065485863278865936153381827968230301952035301852968995773622599413891249721775283479131515574857242454150695950829533116861727855889075098381754637464939319255060400927701671139009848824012858361603563707660104710181942955596198946767837449448255379774726847104047534646208046684259069491293313677028989152104752162056966024058038150193511253382430035587640247496473263914199272604269922796782354781636009341721641219924586315030286182974555706749838505494588586926995690927210797509302955321165344987202755960236480665499119881834797753566369807426542527862551818417574672890977772793800081647060016145249192173217214772350141441973568548161361157352552133475741849468438523323907394143334547762416862518983569485562099219222184272550254256887671790494601653466804988627232791786085784383827967976681454100953883786360950680064225125205117392984896084128488626945604241965285022210661186306744278622039194945047123713786960956364371917287467764657573962413890865832645995813390478027590099465764078951269468398352595709825822620522489407726719478268482601476990902640136394437455305068203496252451749399651431429809190659250937221696461515709858387410597885959772975498930161753928468138268683868942774155991855925245953959431049972524680845987273644695848653836736222626099124608051243884390451244136549762780797715691435997700129616089441694868555848406353422072225828488648158456028506016842739452267467678895252138522549954666727823986456596116354886230577456498035593634568174324112515076069479451096596094025228879710893145669136867228748940560101503308617928680920874760917824938589009714909675985261365549781893129784821682998948722658804857564014270477555132379641451523746234364542858444795265867821051141354735739523113427166102135969536231442952484937187110145765403590279934403742007310578539062198387447808478489683321445713868751943506430218453191048481005370614680674919278191197939952061419663428754440643745123718192179998391015919561814675142691239748940907186494231961567945208095146550225231603881930142093762137855956638937787083039069792077346722182562599661501421503068038447734549202605414665925201497442850732518666002132434088190710486331734649651453905796268561005508106658796998163574736384052571459102897064140110971206280439039759515677157700420337869936007230558763176359421873125147120532928191826186125867321579198414848829164470609575270695722091756711672291098169091528017350671274858322287183520935396572512108357915136988209144421006751033467110314126711136990865851639831501970165151168517143765761835155650884909989859982387345528331635507647918535893226185489632132933089857064204675259070915481416549859461637180270981994309924488957571282890592323326097299712084433573265489382391193259746366730583604142813883032038249037589852437441702913276561809377344403070746921120191302033038019762110110044929321516084244485963766983895228684783123552658213144957685726243344189303968642624341077322697802807318915441101044682325271620105265227211166039666557309254711055785376346682065310989652691862056476931257058635662018558100729360659876486117910453348850346113657686753249441668039626579787718556084552965412665408530614344431858676975145661406800700237877659134401712749470420562230538994561314071127000407854733269939081454664645880797270826683063432858785698305235808933065757406795457163775254202114955761581400250126228594130216471550979259230990796547376125517656751357517829666454779174501129961489030463994713296210734043751895735961458901938971311179042978285647503203198691514028708085990480109412147221317947647772622414254854540332157185306142288137585043063321751829798662237172159160771669254748738986654949450114654062843366393790039769265672146385306736096571209180763832716641627488880078692560290228472104031721186082041900042296617119637792133757511495950156604963186294726547364252308177036751590673502350728354056704038674351362222477158915049530984448933309634087807693259939780541934144737744184263129860809988868741326047215695162396586457302163159819319516735381297416772947867242292465436680098067692823828068996400482435403701416314965897940924323789690706977942236250822168895738379862300159377647165122893578601588161755782973523344604281512627203734314653197777416031990665541876397929334419521541341899485444734567383162499341913181480927777103863877343177207545654532207770921201905166096280490926360197598828161332316663652861932668633606273567630354477628035045077723554710585954870279081435624014517180624643626794561275318134078330336254232783944975382437205835311477119926063813346776879695970309833913077109870408591337464144282277263465947047458784778720192771528073176790770715721344473060570073349243693113835049316312840425121925651798069411352801314701304781643788518529092854520116583934196562134914341595625865865570552690496520985803385072242648293972858478316305777756068887644624824685792603953527734803048029005876075825104747091643961362676044925627420420832085661190625454337213153595845068772460290161876679524061634252257719542916299193064553779914037340432875262888963995879475729174642635745525407909145135711136941091193932519107602082520261879853188770584297259167781314969900901921169717372784768472686084900337702424291651300500516832336435038951702989392233451722013812806965011784408745196012122859937162313017114448464090389064495444006198690754851602632750529834918740786680881833851022833450850486082503930213321971551843063545500766828294930413776552793975175461395398468339363830474611996653858153842056853386218672523340283087112328278921250771262946322956398989893582116745627010218356462201349671518819097303811980049734072396103685406643193950979019069963955245300545058068550195673022921913933918568034490398205955100226353536192041994745538593810234395544959778377902374216172711172364343543947822181852862408514006660443325888569867054315470696574745855033232334210730154594051655379068662733379958511562578432298827372319898757141595781119635833005940873068121602876496286744604774649159950549737425626901049037781986835938146574126804925648798556145372347867330390468838343634655379498641927056387293174872332083760112302991136793862708943879936201629515413371424892830722012690147546684765357616477379467520049075715552781965362132392640616013635815590742202020318727760527721900556148425551879253034351398442532234157623361064250639049750086562710953591946589751413103482276930624743536325691607815478181152843667957061108615331504452127473924544945423682886061340841486377670096120715124914043027253860764823634143346235189757664521641376796903149501910857598442391986291642193994907236234646844117394032659184044378051333894525742399508296591228508555821572503107125701266830240292952522011872676756220415420516184163484756516999811614101002996078386909291603028840026910414079288621507842451670908700069928212066041837180653556725253256753286129104248776182582976515795984703562226293486003415872298053498965022629174878820273420922224533985626476691490556284250391275771028402799806636582548892648802545661017296702664076559042909945681506526530537182941270336931378517860904070866711496558343434769338578171138645587367812301458768712660348913909562009939361031029161615288138437909904231747336394804575931493140529763475748119356709110137751721008031559024853090669203767192203322909433467685142214477379393751703443661991040337511173547191855046449026365512816228824462575916333039107225383742182140883508657391771509682887478265699599574490661758344137522397096834080053559849175417381883999446974867626551658276584835884531427756879002909517028352971634456212964043523117600665101241200659755851276178583829204197484423608007193045761893234922927965019875187212726750798125547095890455635792122103334669749923563025494780249011419521238281530911407907386025152274299581807247162591668545133312394804947079119153267343028244186041426363954800044800267049624820179289647669758318327131425170296923488962766844032326092752496035799646925650493681836090032380929345958897069536534940603402166544375589004563288225054525564056448246515187547119621844396582533754388569094113031509526179378002974120766514793942590298969594699556576121865619673378623625612521632086286922210327488921865436480229678070576561514463204692790682120738837781423356282360896320806822246801224826117718589638140918390367367222088832151375560037279839400415297002878307667094447456013455641725437090697939612257142989467154357846878861444581231459357198492252847160504922124247014121478057345510500801908699603302763478708108175450119307141223390866393833952942578690507643100638351983438934159613185434754649556978103829309716465143840700707360411237359984345225161050702705623526601276484830840761183013052793205427462865403603674532865105706587488225698157936789766974220575059683440869735020141020672358502007245225632651341055924019027421624843914035998953539459094407046912091409387001264560016237428802109276457931065792295524988727584610126483699989225695968815920560010165525637567"
-}
-
-OnWordJumble.Win : all
-{
-	_category_name = reference2
-	_word_list = reference3
-	_word = SPLIT(_word_list,C_BYTE1)[0]
-	_correct_guesses = reference4
-	_scrambled = reference5
-	
-	"\0\b[2]\![set,autoscroll,disable]\_q"
-	"You win! Woohoo!"
-	"\nCategory:\_w[] %(_category_name)"
-	"\n\n"
-	"\![*]\__q[OnWordJumble.Start]Play again\__q  \![*]\__q[OnBlank]Done\__q"
-	"\n\n"
-	
-	WordJumble.MakeDisplay(_correct_guesses)
-}
-
-OnWordJumble.Lose : all
-{
-	_guess = SHIORI3FW.EscapeAllTags(reference0)
-	_category_name = reference2
-	_word_list = reference3
-	_word = SPLIT(_word_list,C_BYTE1)[0]
-	_correct_guesses = reference4
-	_scrambled = reference5
-	
-	"\0\b[2]\![set,autoscroll,disable]\_q"
-	"Aww, come on! The correct word was %(_word)"
-	"\nCategory: %(_category_name)"
-	"\n\n"
-	"\![*]\__q[OnWordJumble.Start]Play again\__q  \![*]\__q[OnBlank]Done\__q"
-	"\n\n"
-	
-	if _correct_guesses != ""; WordJumble.MakeDisplay(_correct_guesses)
-	
-	"\f[color,disable]%(_scrambled)\f[color,default]\n"
-	"\f[strike,1]%(_guess)\f[strike,default]\n\n"
-}
-
-OnWordJumble.Quit : all
-{
-	_category_name = reference2
-	_word_list = reference3
-	_word = SPLIT(_word_list,C_BYTE1)[0]
-	_correct_guesses = reference4
-	_scrambled = reference5
-	
-	"\0\b[2]\![set,autoscroll,disable]\_q"
-	"\![close,inputbox,OnWordJumble.Guess]"
-	"Game over! Play again soon!"
-	"\nCategory: %(_category_name)"
-	"\n\n"
-	"\![*]\__q[OnWordJumble.Start]Play again\__q  \![*]\__q[OnBlank]Done\__q"
-	"\n\n"
-	
-	if _correct_guesses != ""; WordJumble.MakeDisplay(_correct_guesses)
-	
-	"\f[color,disable]%(_scrambled)\f[color,default]\n"
-	"\f[strike,1]%(_word)\f[strike,default]\n\n"
-}
-
-
-//——————————————— Categories / Words ———————————————
-//You can write as many categories as you want. Just copy one of these, and pick a new name.
-//The name of the function after the "WordJumble.Category." part doesn't matter, but for simplicity's sake, I'd make it the name of the category (minus any special characters/spaces)
-//The first string in each array should be the name of the category.
-
-//The more categories and words in each category you have, the better! But mind that anagrams can be mean. Also, be mindful of things that can scramble into profanity, etc.
-
-WordJumble.Category.Fruit : array
-{
-	"Fruit"
-	
-	"Apple"
-	"Apricot"
-	"Banana"
-	"Cantaloupe"
-	"Cherry"
-	"Dragonfruit"
-	"Kiwi"
-	//"Lemon" - this is an anagram with "melon"!
-	"Lime"
-	"Lychee"
-	"Mandarin"
-	"Mango"
-	"Orange"
-	"Persimmon"
-	"Pineapple"
-	"Plum"
-	"Tomato"
-	"Watermelon"
-}
-
-WordJumble.Category.Ponies : array
-{
-	"Ponies and Friends"
-	
-	"Pinkie Pie"
-	"Rainbow Dash"
-	"Fluttershy"
-	"Spike"
-	"Rarity"
-	"Twilight Sparkle"
-	"Applejack"
-	"Muffins"
-	"Vinyl Scratch"
-	"DJ P0N-3"
-	"Gilda"
-	"Starlight Glimmer"
-	"Trixie Lulamoon"
-	"Celestia"
-	"Luna"
-	"Cadence"
-	"Shining Armor"
-	"Flurry Heart"
-	"Applebloom"
-	"Sweetie Belle"
-	"Scootaloo"
-	"Zecora"
-	"Gummy"
-	"Angel"
-	"Owlowiscious"
-	"Cheese Sandwich"
-	"Discord"
-	"Tank"
-	"Philomena"
-	"Winona"
-	"Peewee"
-	"Opalescence"
-	"Cozy Glow"
-}
-
-WordJumble.Category.Apples : array
-{
-	"Apple Varieties"
-	
-	"Granny Smith"
-	"Golden Delicious"
-	"Red Delicious"
-	"McIntosh"
-	"Braeburn"
-	"Fuji"
-	"Pink Lady"
-	"York"
-	"Baldwin"
-	"Gala"
-	"Honeycrisp"
-}
-
-
-//——————————————— Game logic ———————————————
-OnWordJumble.Start
-{
-	//The maximum number of words that you want the user to have to guess before they win.
-	//Note that if there are not this many words in the category, it will simply use all the available words once.
-	_max_words = 5
-	
-	
-	//Picking a category
-	_categories = GETFUNCLIST("WordJumble.Category.")
-	_category = EVAL("%(ANY(_categories))")
-	_category_name = _category[0]
-	_category[0] = IARRAY
-	
-	_word_list = ""
-	for _i = 0; _i < _max_words && ARRAYSIZE(_category) > 0; _i++
-	{
-		if _i != 0; _word_list += C_BYTE1
-		_word_list += ANY(_category)
-		_category[LSO] = IARRAY
-	}
-	
-	"\![close,inputbox,OnWordJumble.Guess]\![raise,OnWordJumble.Display,start,,""%(_category_name)"",""%(_word_list)""]"
-}
-
-//Main game window
-OnWordJumble.Display : all
-{
-	_category_name = reference2
-	_word_list = SPLIT(reference3,C_BYTE1)
-	_correct_guesses = reference4
-	
-	if !(reference0 == "start"); _word_list[0] = IARRAY
-	if _word_list[0] == ""
-	{
-		"\C\![raise,OnWordJumble.Win,,,""%(_category_name)"",""%(_word_list)"",""%(_correct_guesses)"",""%(_scrambled)""]"
-		return
-	}
-	
-	_word = _word_list[0]
-	_scrambled = WordJumble.Scramble(_word)
-	
-	_word_list = WordJumble.MakeMultiArray(,_word_list)
-	
-	"\C\![lock,balloonrepaint]\c"
-	"\0\b[2]\_q\*\t"
-	"\![no-markdown]" //TODO I'm silly and testing this in a ghost with markdown
-	"\![open,inputbox,OnWordJumble.Guess,--reference=""%(_category_name)"",--reference=""%(_word_list)"",--reference=""%(_correct_guesses)"",--reference=""%(_scrambled)""]"
-	
-	"Unscramble the words!"
-	"\n"
-	"Category: %(_category_name)"
-	"\n\n"
-	"\![*]\__q[OnWordJumble.Quit,,,""%(_category_name)"",""%(_word_list)"",""%(_correct_guesses)"",""%(_scrambled)""]Give up\__q"
-	"\n\n"
-	
-	if _correct_guesses != ""; WordJumble.MakeDisplay(_correct_guesses)
-	
-	"%(_scrambled)"
-	"\![unlock,balloonrepaint]"
-}
-
-OnWordJumble.Guess
-{
-	_category_name = reference2
-	_word_list = reference3
-	_word = SPLIT(_word_list,C_BYTE1)[0]
-	_word = SHIORI3FW.EscapeAllTags(_word)
-	_correct_guesses = reference4
-	_scrambled = reference5
-	
-	if reference0 == ""; "\C\![open,inputbox,OnWordJumble.Guess,--reference=""%(_category_name)"",--reference=""%(_word_list)"",--reference=""%(_correct_guesses)"",--reference=""%(_scrambled)""]"
-	elseif TOLOWER(reference0) == TOLOWER(_word) //Correct guess, game continues
-	{
-		if _correct_guesses != ""; _correct_guesses += WordJumble.Delimiter
-		_correct_guesses += "%(_word)%(C_BYTE1)%(_scrambled)"
-		
-		"\C\![raise,OnWordJumble.Display,,,""%(_category_name)"",""%(_word_list)"",""%(_correct_guesses)"",""%(_scrambled)""]"
-	}
-	else //Lose
-	{	
-		"\C\![raise,OnWordJumble.Lose,""%(reference0)"",,""%(_category_name)"",""%(_word_list)"",""%(_correct_guesses)"",""%(_scrambled)""]"
-	}
-}
-
-
-//——————————————— Utility functions ———————————————
-
-//If for some reason the double pipe doesn't work as a delimiter for you, you can pick something else here
-WordJumble.Delimiter
-{
-	"||"
-}
-
-//Scrambles whatever word is input
-WordJumble.Scramble
-{
-	_word = TOLOWER(_argv[0])
-	_output = ""
-	//Try up to 100 times to scramble the word without just outputting the original word again.
-	//There is a chance someone puts in a word that can't be scrambled, like if they just put "aaa". So this stops after 100 tries so as not to potentially crash SSP
-	for _i = 0; _i < 100; _i++
-	{
-		_output = ""
-		while STRLEN(_word) > 0
-		{
-			_n = RAND(STRLEN(_word))
-			_output += SUBSTR(_word,_n,1)
-			_word = ERASE(_word,_n,1)
-		}
-		
-		if _output != _word; break
-	}
-	_output
-}
-
-//Make a general purpose array into a simple array
-//The first argument is the delimiter. YOU MUST INCLUDE THIS ARGUMENT.
-//If you want to use C_BYTE1, you may leave the argument blank. But it MUST exist, even if it's empty.
-//All other arguments are elements of the array that will be made into a simple array
-WordJumble.MakeMultiArray
-{
-	//I hate this
-	_delimiter = C_BYTE1
-	if _argv[0] != ""; _delimiter = _argv[0]
-	_argv[0] = IARRAY
-	
-	_output = ""
-	foreach _argv; _arg
-	{
-		if _output != ""; _output += _delimiter
-		_output += _arg
-	}
-	_output
-}
-
-WordJumble.MakeDisplay : all
-{
-	_correct_guesses = _argv[0]
-	_correct_guesses = SPLIT(_correct_guesses,WordJumble.Delimiter)
-	foreach _correct_guesses; _guess
-	{
-		_w = _guess[0,C_BYTE1]
-		_w = SHIORI3FW.EscapeAllTags(_w)
-		_s = _guess[1,C_BYTE1]
-		"\f[color,disable]%(_s)\n"
-		"\f[color,default.anchor]%(_w)\f[color,default]\n\n"
-	}
-}
-
-//Written by Zichqec https://ukagaka.zichqec.com/
-//v1.0.0
-/*
-To run this game in your ghost, call the event OnTTT.Start from a menu choice, raise tag, etc. Example: \![*]\q[Play Tic Tac Toe,OnTTT.Start]
-
-There is dialogue to customize towards the bottom of the OnTTT.Display event.
-
-If you want to adjust how often the ghost tries to make a smart move, you can do so at the bottom of the TTT.GhostMovePick function.
-
-Note that this *requires* a monospace font to work. I've set it to courier new for this purpose.
-
-This game isn't nearly as smart as the older implementation of Tic Tac Toe that I've seen floating around, but that's by design! My hope with this version is that it feels more natural and gives the user a chance to win, plus you can adjust the difficulty a bit based on your character. Also, I really wanted the ability to have comments from the ghost during the game.
-*/
-
-OnTTT.Start
-{
-	TTT.Board = ("0","0","0","0","0","0","0","0","0")
-	"\![raise,OnTTT.Display]"
-}
-
-OnTTT.Display : all
-{
-	//You can change these to be things besides Xs and Os if you want, or you could set it up to let the user pick or what have you.
-	_usertoken = "X"
-	_ghosttoken = "O"
-
-	_win = TTT.WinCheck
-	_who_won = _win[0]
-	_win[0] = IARRAY
-
-	"\C\![lock,balloonrepaint]\c"
-	"\0\b[2]\![set,autoscroll,disable]\![quicksection,1]"
-	if _who_won == 0; "\*\t"
-
-
-	"\f[name,courier new]\f[height,+20]\f[bold,1]\f[cursorstyle,none]\f[align,center]"
-	//Board
-	" | | \n \n[-100]_____\n"
-	" | | \n \n[-100]_____\n"
-	" | | \n \n[-300]"
-
-	_i = 0
-	foreach TTT.Board; _space
-	{
-		if _who_won != 0 && ASEARCH("%(_i)",_win) != -1; "\f[color,default.anchor]"
-
-		if _space == "1"; _usertoken
-		elseif _space == "2"; _ghosttoken
-		else
-		{
-			if reference0 != 1 && _who_won == 0 //It's the user's turn to move
-			{
-				"\__q[OnTTT.Move,1,%(_i)] \__q"
-			}
-			else; " "
-		}
-
-		"\f[color,default]"
-		_i++
-		if _i % 3 == 0; "\n"
-		else; " "
-	}
-	"\f[default]\f[align,left]"
-	"\n\n"
-	if _who_won != 0 //If someone won or it was a draw
-	{
-		"\![*]\__q[OnTTT.Start]Play again\__q  \![*]\__q[OnBlank]Done\__q"
-	}
-	else
-	{
-		"\![*]\__q[OnTTT.Quit]Give up\__q"
-	}
-	//"\n\![*]\__q[OnTTT.Display,1]Skip turn\__q" //For debugging
-	"\![unlock,balloonrepaint]\![quicksection,0]\n\n"
-
-	if _who_won == 0 && reference0 == 1 //Ghost's turn
-	{
-		_play = TTT.GhostMovePick
-		_type = _play[0]
-		_move = _play[1]
-
-		//Each type is a different move that the ghost will take. You can have responses to all of these if you want, or you can cut out the ones you don't care for and just keep the else statement. Or snip them all if you don't want the ghost to talk!
-		if _type == "win" //Taking a winning move
-		{
-			nonoverlap :/
-			{
-				"Whoopee, I'm about to win!"
-			}
-		}
-		elseif _type == "block" //Blocking the user from winning
-		{
-			nonoverlap :/
-			{
-				"*giggle*"
-				"Oki-doki-loki!"
-			}
-		}
-		elseif _type == "build" //Playing in the same row/column as one of its previous moves
-		{
-			nonoverlap :/
-			{
-				"*giggle*"
-				"Oki-doki-loki!"
-				"Almost there!"
-			}
-		}
-		elseif _type == "middle" //Taking the middle if the user has not
-		{
-			nonoverlap :/
-			{
-				"Woo, I get to take the middle! Yay!"
-			}
-		}
-		else //Picking a random space
-		{
-			nonoverlap :/
-			{
-				"Hmm..."
-				"Check it out!"
-				"Choices, choices, choices!"
-				"Isn't this exciting?!"
-			}
-		}
-		"\_w[300]"
-		"\![raise,OnTTT.Move,2,%(_move)]"
-	}
-	elseif _who_won == 1 //Player win
-	{
-		nonoverlap :/
-		{
-			"Aww, come on, you win!\w8 Oh well..."
-			"Aww, I lost! *sigh*"
-			"Aw, I lost! Oh well, at least this isn't the Flash game this was based off of..."
-			"You're good!"
-			"You're getting really good at this!"
-		}
-	}
-	elseif _who_won == 2 //Ghost win
-	{
-		nonoverlap :/
-		{
-			"Hooray, I win!\w8 Whoopee!\w5 Yahoo!\w5 Teeheehee..."
-			"Woohoo! I win!\w8 Yay! Awesome! Amazing!\w5 Hehe..."
-			"I love this game! It's one of my favorites!"
-			"Awesome! I win!\w8 Woo! Wanna play again?"
-			"Yes! I win! This is a great game!"
-		}
-	}
-	elseif _who_won == 3 //Draw
-	{
-		nonoverlap :/
-		{
-			"Aw, it's a draw. Hey, that rhymed!"
-			"That was totally unbelievable!"
-		}
-	}
-}
-
-//Quitting the game
-OnTTT.Quit
-{
-	"\0\b[0]Aww, why not play some more?\w8 Oki-doki-loki, that's all for now!"
-}
-
-OnTTT.Move
-{
-	TTT.Board[reference1] = TOSTR(reference0)
-	"\C\![lock,balloonrepaint]\![raise,OnTTT.Display,%(reference0)]"
-}
-
-//Determine if there is a smart move to be played, and if so, whether it will be taken. Outputs what type of play it picked and what index it picked
-TTT.GhostMovePick
-{
-	_open = ASEARCHEX(0,TTT.Board)
-
-	_win_positions = ( /
-		"0,1,2", /
-		"3,4,5", /
-		"6,7,8", /
-
-		"0,3,6", /
-		"1,4,7", /
-		"2,5,8", /
-
-		"0,4,8", /
-		"2,4,6" /
-	)
-
-	_positions_to_win = IARRAY
-	_positions_to_block = IARRAY
-	_positions_to_build = IARRAY
-	_who_won = 0
-	foreach _win_positions; _position
-	{
-		_pos0 = TOINT(_position[0])
-		_pos1 = TOINT(_position[1])
-		_pos2 = TOINT(_position[2])
-
-		_space = TTT.Board[_pos0] + TTT.Board[_pos1] + TTT.Board[_pos2]
-
-		if _space == "220" || _space == "202" || _space == "022"
-		{
-			if TTT.Board[_pos0] == 0; _positions_to_win ,= _pos0
-			elseif TTT.Board[_pos1] == 0; _positions_to_win ,= _pos1
-			elseif TTT.Board[_pos2] == 0; _positions_to_win ,= _pos2
-		}
-		elseif _space == "110" || _space == "101" || _space == "011"
-		{
-			if TTT.Board[_pos0] == 0; _positions_to_block ,= _pos0
-			elseif TTT.Board[_pos1] == 0; _positions_to_block ,= _pos1
-			elseif TTT.Board[_pos2] == 0; _positions_to_block ,= _pos2
-		}
-		elseif _space == "002" || _space == "020" || _space == "200"
-		{
-			if TTT.Board[_pos0] == 0; _positions_to_build ,= _pos0
-			if TTT.Board[_pos1] == 0; _positions_to_build ,= _pos1
-			if TTT.Board[_pos2] == 0; _positions_to_build ,= _pos2
-		}
-	}
-
-	_play_index = ANY(_open)
-	_play_type = "random"
-
-	_rand = RAND(100)
-
-
-	//You can adjust the smartness of the ghost by changing the values at the ends of these checks. They're a percentage out of 100, so setting one of them to 80 means an 80 percent chance, plus it increases the more options are available to it (so if there are multiple moves that will win, it has an increased chance to pick one)
-	if ARRAYSIZE(_positions_to_win) > 0 && _rand - (ARRAYSIZE(_positions_to_win) * 10) <= 80
-	{
-		_play_type = "win"
-		_play_index = ANY(_positions_to_win)
-	}
-	elseif ASEARCH(4,_open) != -1 && _rand <= 80
-	{
-		_play_type = "middle"
-		_play_index = 4
-	}
-	elseif ARRAYSIZE(_positions_to_block) > 0 && _rand - (ARRAYSIZE(_positions_to_block) * 10) <= 80
-	{
-		_play_type = "block"
-		_play_index = ANY(_positions_to_block)
-	}
-	elseif ARRAYSIZE(_positions_to_build) > 0 && _rand - (ARRAYSIZE(_positions_to_build) * 10) <= 70
-	{
-		_play_type = "build"
-		_play_index = ANY(_positions_to_build)
-	}
-
-	(_play_type,_play_index)
-}
-
-//Check if there is a win on the board, and if so, list which indices are part of the win
-TTT.WinCheck
-{
-	//0 1 2
-	//3 4 5
-	//6 7 8
-
-	_win_positions = ( /
-		"0,1,2", /
-		"3,4,5", /
-		"6,7,8", /
-
-		"0,3,6", /
-		"1,4,7", /
-		"2,5,8", /
-
-		"0,4,8", /
-		"2,4,6" /
-	)
-
-	_found_positions = IARRAY
-	_who_won = 0
-	foreach _win_positions; _position
-	{
-		_pos0 = TOINT(_position[0])
-		_pos1 = TOINT(_position[1])
-		_pos2 = TOINT(_position[2])
-
-		_space = TTT.Board[_pos0] + TTT.Board[_pos1] + TTT.Board[_pos2]
-
-		if _space == "111" || _space == "222"
-		{
-			if _space == "111"; _who_won = 1
-			elseif _space == "222"; _who_won = 2
-			_found_positions ,= _position
-		}
-	}
-
-	_win_indices = IARRAY
-	foreach _found_positions; _pos
-	{
-		foreach SPLIT(_pos,","); _index
-		{
-			if ASEARCH(_index,_win_indices) == -1; _win_indices ,= _index
-		}
-	}
-
-	//Draw
-	if _who_won == 0 && ASEARCH("0",TTT.Board) == -1; _who_won = 3
-
-	//Outputs who won, and then any and all winning index numbers
-	(_who_won,_win_indices)
-}
- //**** Don't touch this ***************************************************************
- //This is code stuff and nothing for you to worry about, just save the .dic and move on! You're done!
- 
- On_\person
-{
- 	person
 }

@@ -1,0 +1,62 @@
+KeroMenuGreetings : nonoverlap
+{
+	"\1Hey there! What's needed?"
+ 	"\1Hi, I hope you're not here to report a bug!"
+ 	"\1What do you wanna do, huh?"
+ 	"\1Hi, I'm the awesome Rainbow Dash! Check out what I can do!"
+}
+
+//Because there is an all modifier here, you don't need to write -- between menu options
+OnKeroMenu : all
+{
+	"\1\b2\![set,autoscroll,disable]"
+	if SHIORI3FW.Eventid == "OnMouseDoubleClick"; KeroMenuGreetings //The check here is so they won't comment if you click the back button. Remove if you prefer
+	"\n\n\_q"
+	
+	//Put anything you want here, anything at all. For example, here's how you can add your own menu... You can make as many like this as you want! Uncomment if you want to test it out, or erase if you don't want it
+	"\![*]\q[Ask About Cool Stuff,OnCoolness]\n\n"
+	"\![*]\q[Set Hemisphere,OnSetHemisphere]\n\n/"
+	"\![*]\q[Close Menu,keroCANCEL]"
+}
+
+Select.keroCANCEL
+{
+	"\1\s[10]Alrighty then, cancelled.\e"
+	"\1\s[10]Aww, man! Oh well, it's cool.\e"
+}
+
+OnCoolness
+{
+	"\1\s[10]Oh, you're asking what I think is really cool in life? Well, to start off, lots of things are cool, like the Wonderbolts!\w8\0\s[0]Yeah, Dashie's just gonna ramble a lot now about loads of cool stuff! Yay!\w8\1\s[10]\n\n[half]The Wonderbolts are the greatest stunt flyers in all of Equestria! Ever since I was a little filly...\w8\0\s[0]\n\n[half]Dashie has always wanted to join the Wonderbolts!\w8\1\s[10]\n\n[half]I trained really hard, and I even joined the Young Flyers Competition-\w9 wait, I'm supposed to be talking about other cool stuff! That list includes: my pet tortoise Tank, all my friends' pets (I guess that includes Gummy),\w8\0\s[0]\n\n[half]Yay!\w8\1\s[10]\n\n[half]sleeping on clouds in the air, Winter Wrap Up, Running of the Leaves, my friends, rainbows, the Wonderbolts, Homestar Runner toons, racing through the sky, the Wonderbolts, being able to control the weather, the Wonderbolts, Tank, my pet tortoise, and lots more stuff! But I guess it's way too long, so I'll spare ya, for now.\w8\0\s[0]\n\n[half]Hmm, something's strange about the list...\w8 Oh well! Awesome, huh? \w8 Surprise question! What's your favorite icecream flavor?\![open,inputbox,OnIceCream,-1]"
+
+	"\1\s[10]Ooh, you're asking what I think is really awesome in life? Well, to start off, lots of things are awesome, like the Wonderbolts!\w8\0\s[0]Yeah, Dashie's just gonna ramble a lot now about loads of cool stuff! Yay! I'll let her talk this time.\w8\1\s[10]\n\n[half]The Wonderbolts are the greatest stunt flyers in all of Equestria! Ever since I was a little filly, I've always wanted to join the Wonderbolts! I trained really hard, and I even joined the Young Flyers Competition, which was honestly the biggest day for all of us, not just me! \w9 ...wait, I'm supposed to be talking about other awesomeness! That list includes: my pet tortoise Tank, all my friends' pets (I guess that includes Gummy),\w8\0\s[0]\n\n[half]Yay!\w8\1\s[10]\n\n[half]sleeping on clouds in the air, Winter Wrap Up, Running of the Leaves, my friends, rainbows, the Wonderbolts, Homestar Runner toons, racing through the sky, the Wonderbolts, being able to control the weather, the Wonderbolts, Tank, my pet tortoise, and lots more stuff! But I guess it's way too long, so I'll spare ya, for once.\w8\0\s[0]\n\n[half]Hmm, something's strange about the list...\w8 Oh well! Cool, huh? \w8 Surprise question! What's your favorite icecream flavor?\![open,inputbox,OnIceCream,-1]"
+}
+
+OnIceCream
+{
+IceCream = reference0
+
+"\0\s[0]I love %(IceCream) flavor! Super duper delicious!\e"
+"\0\s[0]Not my favorite, but I really like %(IceCream) flavor.\e"
+"\0\s[0]I don't really like %(IceCream) flavor, but awesome that you like it!\e"
+}
+
+OnSetHemisphere
+{
+	"\1\s[10]Ya wanna tell me which hemisphere you're in?"
+	--
+	"\n\n[half]/
+	\![*]\q[North Hemisphere,OnNorthHemi]\n/
+	\![*]\q[South Hemisphere,OnSouthHemi]\n\n/
+	\![*]\q[Nevermind,OnKeroMenu]\e"
+}
+OnNorthHemi
+{
+hemisphere = "Northern"
+"\1\s[10]Set to Northern.\e"
+}
+OnSouthHemi
+{
+hemisphere = "Southern"
+"\1\s[10]Set to Southern.\e"
+}

@@ -1,0 +1,78 @@
+OnFirstBoot
+{
+	//If you add variables, make sure to initialize them here!
+	//Note - I haven't added anything about username or pronouns here because it's all handled by the SSP prefs
+	stroke = 0
+	hemisphere = "Northern"
+	LastTalk = ""
+	
+	"\t\1\s[10]\0\s[0]Hi there, %(username)!\w5 Hope you enjoyed my Welcome to Ponyville party last night!\x[noclear]\w8\1\s[10]This is a pretty cool place you've got there.\w5 I really like your desktop wallpaper thing.\x[noclear]\0\s[0]\n\n[half]Anyway, I love being headrubbed! And facerubbed and kissed, too.\w5 Right click on either of us for the regular ol' menu, and double-click on either of us for our special, fun character menus! Yay!\w8\1\n\n[half]\s[10]\x[noclear]What are you talking about, Pinkie?\0\s[0]\n\n[half]With my menu, you can do some configs, play a fun game, ask us stuff, 'make us talk', etc.\w8\1\s[10]\n\n[half]\x[noclear]What do you mean by that last one?\w8 Anyway, you can ask me about cool stuff!\x[noclear]\w8\0\s[0]\n\n[half]Check out the Ghost Preferences SSP menu! If your name and birthday are set up there, then we'll know it! Woo!"
+}
+
+OnInitialize
+{
+	//If you want some variables to reset on boot, put them here. This event will happen even if you add other events like OnGhostChanged
+	//OnInitialize is a NOTIFY event! That means it cannot return scripts. This event is only meant for things like variable changes. See this page on Ukadoc for more info: https://ukagakadreamteam.github.io/ukadoc/manual/spec_shiori3.html
+	
+	//If you add new variables in updates, I recommend initializing them like so:
+	//if !ISVAR("NewVariable"); NewVariable = 0
+	//This means that it will only set the new variable if the user doesn't already have it, so that their variables don't get overwritten
+	
+	if reference0 != "reload" //For things you want to reset EXCEPT when just reloading; a convenience for you the dev, basically
+	{
+		LastTalk = ""
+	}
+}
+
+OnBoot
+{
+	_temp = SHIORI3FW.UserBirthday
+	_user_birthday = "%(_temp[1])/%(_temp[2])" //M/D, if you want it D/M you can switch it around
+	_today = "%(month)/%(day)" //Again, switch this around if using D/M
+	
+	"\1\s[10]\0\s[0]"
+	--
+	if _today == _user_birthday
+	{
+		"\0\s[0]Happy birthday! Ooh, I'll give you a present! How about a new pet, like the %(pets)? Cool, huh?\w8\1\s[10]And I'll bake you some cake with Pinkie's help!"
+		"\0\s[0]Hooray! Happy birthday, %(username)! We'll throw ya a party!\w8\1\s[10]Happy awesome birthday, %(username)!"
+		"\0\s[0]Woohoo! Happy birthday, %(username)! We'll throw ya a party so you'll have a great day!\w8\1\s[10]Happy awesome birthday, %(username)!"
+		"\0\s[0]Yay! Happy birthday, %(username)! I'll bake some cake!\w8\1\s[10]Awesome! Happy birthday, %(username)! Aw yeah!"
+	}
+	elseif _today == "1/1" //You can add whatever cool dates you want with more elseifs here
+	{
+		"\0\s[0]Happy New Year! My new year's resolution is to cut down on the number of sweets I eat.\w8\1\s[10]Normally, New Year's resolutions don't get done. Right? I mean, mine didn't.\w8\0\s[0]\n\n[half]Huh? Really?\w8\1\s[10]\n\n[half]Uh...\e"		
+		"\0\s[0]Happy New Year! What's your new year's resolution? Mine's to visit more alternate universes and make more new friends!\w8\1\s[10]Er, I haven't come up with anything, sorry!\w8\0\s[0]\n\n[half]I guess, be less lazy?\e"
+	}	
+	elseif _today == "5/3" //You can add whatever cool dates you want with more elseifs here
+	{
+		"\0\s[0]Happy birthday to me!\w8\1\s[10]Yep.\e"
+		
+		"\0\s[0]Hi there! For my birthday, Pinkie Promise to bake me something or else...\w8\1\s[10]S-\w5 Sure...\e"
+		
+		"\0\s[0]Yay, it's my birthday!\w8\1\s[10]I'll give you a present! How about a new pet, like the %(pets)? Cool, huh?\e"
+	}
+	else //Normal boot
+	{
+		"\0\s[0]Hi again! So, watcha doing today?\w8\1\s[10]I'm really interested in what you're doing there on the internet.\w8\0\s[0]\n\n[half]Me too! Ooh."
+	
+		"\0\s[0]Hi!\w8\1\s[10]If your desktop is not MLP-themed, well, it needs to be about 20% cooler.\e"
+	
+		"\0\s[0]Hi, I'm Pinkie Pie and yesterday, I made it required by the law to have a Pinkie Pie-themed or an MLP-themed Desktop.\w8\1\s[10]Also, I'm 120% sure you can make your projects really great!"
+		
+		"\0\s[0]Hi, I'm Pinkie Pie! Let's bake cupcakes!\w8\1\s[10]Aw yeah!"
+	}
+}
+
+OnClose
+{
+	"\0\s[0]One last game before we go! Guess what number I'm thinking of...\w8\1\s[10]Sorry Pinkie, maybe later! Bye bye!"
+	"\0\s[0]Bye! I'm kinda busy, anyway.\w8\1\s[10]She has to go to work. Me too! Bye!"
+	"\0\s[0]Aww, I love the mornings, and the evenings, too. Bye bye!"
+	"\0\s[0]Aww, goodbye!\w8\1\s[10]Bye for now! Hope to see you again soon!"
+	"\0\s[0]Huh?! Oki-doki-loki, bye!\w8\1\s[10]Aw man! What's the deal?! Oh well, see ya later, alligator!"
+	"\0\s[0]Aww, come on!\w8\1\s[10]Oh well, gotta practice! Bye!"
+	"\0\s[0]You gonna play The Sims? Oi-doki-loki, have fun1 Bye!"
+	--
+	"\w8\w8\-" //This is what makes the ghost close (after a short pause), do not remove the \- , and MAKE SURE you don't use a \e before this point or it won't work
+}
