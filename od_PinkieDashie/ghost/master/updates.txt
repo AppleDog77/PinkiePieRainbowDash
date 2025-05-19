@@ -1,7 +1,7 @@
 charset,OSNative
 file,developer_options.txt13aa1dde3e8fc145b6e8a3bc4e47f46fsize=144date=2024-05-26T18:49:41
 file,install.txte7c4c4eb359c1b3ec4a467a983247f2esize=127date=2025-02-17T08:24:19
-file,readme.txtc0c51e33941398fa723fd8b898864ea6size=4203date=2025-05-20T01:31:11
+file,readme.txt9d7aa8d9d07b6b25ba95e8556c644633size=4203date=2025-05-20T02:41:56
 file,thumbnail.png7fba7f54adfdf261af2fb271cc21795fsize=24538date=2020-02-08T11:41:04
 file,ghost/master/aitalk.dice2bc0ecc2e500a4524517d4ed698eb09size=11606date=2025-05-18T13:03:30
 file,ghost/master/boot.dicbee9a0d7e4e8322980b468293c6c0230size=5087date=2025-05-20T01:38:43
