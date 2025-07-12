@@ -1,0 +1,13 @@
+ghost/master/sakura_menu.dic
+ghost/master/kero_menu.dic
+ghost/master/anchor.dic
+ghost/master/bootend.dic
+ghost/master/etc.dic
+ghost/master/menu.dic
+ghost/master/string.dic
+ghost/master/pinkie.ico
+ghost/master/gomi.dll
+ghost/master/mciaudior.dll
+ghost/master/saori_cpuid.dll
+
+
