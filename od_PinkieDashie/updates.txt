@@ -1,5 +1,5 @@
 charset,OSNative
-file,delete.txt49b78fec63658a4b74ed4a38bf653a72size=276date=2025-07-12T12:13:30
+file,delete.txtc84d5792e735ae0f9fb608e550673fdasize=871date=2025-07-12T14:32:34
 file,developer_options.txt13aa1dde3e8fc145b6e8a3bc4e47f46fsize=144date=2024-05-26T18:49:41
 file,install.txte7c4c4eb359c1b3ec4a467a983247f2esize=127date=2025-02-17T08:24:19
 file,readme.txtefff5c9b498def521ec51b9cdedb6c20size=4498date=2025-07-12T10:45:19
