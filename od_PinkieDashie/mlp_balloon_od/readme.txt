@@ -12,4 +12,4 @@ V1.0.0 - Balloon Release (Sun, Oct 11, 2020 alongside Pinkie Pie and Rainbow Das
 
 V2.0.0 - Overhauled to make it more streamlined, changed folder name, added new homeurl, moved from Ocean, and added background picture by BlackGryph0n (Thu, Sep 5, 2024)
 
-V2.0.1 - Added thumbnail.
+V2.0.1 - Added thumbnail. (Sat, Jul 12, 2025)

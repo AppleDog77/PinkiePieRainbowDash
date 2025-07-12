@@ -1,4 +1,4 @@
-delete.txta7debaa0e74a48d4aa22850200c5dd60size=299date=2025-07-12T15:22:49charset=OSNative
+delete.txta7debaa0e74a48d4aa22850200c5dd60size=299date=2025-07-12T15:15:30charset=OSNative
 developer_options.txt13aa1dde3e8fc145b6e8a3bc4e47f46fsize=144date=2024-05-26T18:49:41
 install.txte7c4c4eb359c1b3ec4a467a983247f2esize=127date=2025-02-17T08:24:19
 readme.txt1b7d55fba85f7c9827578f9066ba340asize=4515date=2025-07-12T15:23:36
@@ -13,7 +13,7 @@ ghost/master/menu_kero.dic78527fadc3feeec242199016932280eesize=4069date=2025-
 ghost/master/menu_sakura.dic9c42cb32929bfec17bba591a3aa83d92size=36094date=2025-07-09T09:56:19
 ghost/master/meta.dic07015a8aa34eb87ad20c60683362786csize=10723date=2025-07-04T16:52:43
 ghost/master/mouse.dicb6296ae61f47202e89adc2d6cc06ca3esize=5177date=2025-06-25T00:12:21
-ghost/master/other.dicc694d46391fda99e5e601dbfade650dcsize=10853date=2025-07-12T13:08:15
+ghost/master/other.dic311ca61a20364fc4efc55af7af08aafbsize=10839date=2025-07-12T15:16:59
 ghost/master/word.dic50283b474de31879c639ef4a4abcc223size=8752date=2025-07-09T01:20:58
 ghost/master/yaya.dllfa8bac5d6d7346524317f731dc63803dsize=880640date=2024-02-04T11:37:55
 ghost/master/yaya.txt9a1afd263efefba0632d5340d2aba86esize=729date=2025-06-18T22:00:09
@@ -33,4 +33,4 @@ shell/master/surface1501.pngf5d1547165feb27f43c95fdddbc5827asize=428date=2025
 shell/master/surface1502.png31fe87be623a9d00a45d5d5d0d96daf8size=405date=2025-06-13T15:05:47
 shell/master/surface1601.pngfb393508f5942ca3b222b19ecca024fesize=1439date=2025-06-13T15:28:21
 shell/master/surface1602.pngb29b76c7aff0e62ae0d0a2ea8a9df1e1size=1400date=2025-06-13T15:28:13
-shell/master/surfaces.txtee46645e6f7f8807ee328e6beba58004size=3351date=2025-07-12T09:07:42
+shell/master/surfaces.txt8b3782e643e6021b172bccab449eec41size=3401date=2025-07-12T15:34:44
