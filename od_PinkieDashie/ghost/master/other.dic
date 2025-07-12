@@ -33,6 +33,19 @@ Capitalize
 	_rest = ERASE(_argv[0],0,1) //Erase the first character and store everything else in _rest
 	TOUPPER(_first) + _rest
 }
+
+OnNeedlePoke
+{
+	if reference0 == 0 //Sakura
+	{
+		"\0Ow! Don't pop my balloons!"
+	}
+	elseif reference0 == 1 //Kero
+	{
+		"\1Ow! Hey, what did ya do that for?!"
+	}
+}
+
 hour24
 {
 	if hour < 10; "0"
@@ -140,6 +153,30 @@ OnChoiceSelect
     EVAL("Select.%(reference0)")
 }
 
+ghostver
+{
+	"v2.1.0"
+}
+
+OnSpectrePlugin.ConfirmCalibration
+{
+	"\![raiseplugin,Spectre,OnCustomCalibrationConfirm,__NO_EXPRESSIONS__]"
+}
+
+OnSpectrePlugin.Possession
+{
+	if RAND(10) == 0
+	{
+		if reference0 == "cheerful"
+		{
+		"\0\s[0]Dashie, I'm sensing a happy lil' ghost around us! Hi there, Spectre!\1\s[10]Who the hay is the ghost? \0\s[0]\n\n[half]I dunno, but they seem friendly!"
+		}
+		else
+		{
+		"\0\s[0]Dashie, I suddenly feel a chill...\1\s[10]Should I cover you up with a blanket or something?\w8 That's weird...\0\s[0]Yeah...\w8 But the chilly feeling seems to be gone for now..."
+		}
+	}
+}
 
 //—————————————————————————————— Right click menu links ——————————————————————————————
 

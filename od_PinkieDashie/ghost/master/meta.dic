@@ -6,7 +6,7 @@
 
 OnInstallComplete
 {
-	"\0\s[0]Hi, new friend! Welcome to your new home.\w8\1s[10]Their name is %(reference1) (%(reference0)). Hey there!"
+	"\0\s[0]Hi, new friend! Welcome to your new home.\w8\1\s[10]Their name is %(reference1) (%(reference0)). Hey there!"
 	--
 	//A little menu to open or change to the ghost that was installed immediately
 	if "ghost" _in_ reference0
@@ -56,7 +56,7 @@ OnNarCreated
 	//Makes a clickable link that'll open the location of the file they just made
 	_nar = "\_a[OnNarLocation,""%(reference1)""]%(reference0)\_a"
 	
-	"\0\s[0]Successfully created our beautiful %(_nar)!"
+	"\0\s[0]Successfully created our beautiful %(_nar) nar file!"
 }
 
 OnNarLocation

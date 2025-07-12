@@ -16,42 +16,28 @@ descript
 
 surface0
 {
-	collision0,17,3,50,21,Head
-	collision1,15,23,40,42,Face
-	
-	//Example code for blink animation - uncomment if you want it
-	//animation0.interval,random,4
-	//animation0.pattern0,overlay,101,0,0,0
-	//animation0.pattern1,overlay,102,100,0,0
-	//animation0.pattern2,overlay,-1,50,0,0
-	
-	
-	//Example code for a talk animation - uncomment if you want it
-	// animation1.interval,talk,4
-	// animation1.pattern0,alternativestart,(2,3,4)
-	
-	// animation2.interval,never
-	// animation2.pattern0,overlay,103,0,0,0
-	// animation2.pattern1,overlay,104,200,0,0
-	// animation2.pattern2,overlay,-1,200,0,0
-	
-	// animation3.interval,never
-	// animation3.pattern0,overlay,103,0,0,0
-	// animation3.pattern1,overlay,-1,200,0,0
-	
-	// animation4.interval,never
-	// animation4.pattern0,overlay,104,0,0,0
-	// animation4.pattern1,overlay,105,200,0,0
-	// animation4.pattern2,overlay,-1,200,0,0
+	collisionex0,Head,polygon,0,0,49,0,49,19,0,19
+	collisionex1,Face,polygon,0,20,52,20,52,40,0,40
+
+	animation0.interval,random,4
+	animation0.pattern0,overlay,1501,0,0,0
+	animation0.pattern1,overlay,1502,100,0,0
+	animation0.pattern2,overlay,-1,50,0,0
 }
 
 //—————————————————————————————— Kero surfaces ——————————————————————————————
 
 surface10
 {
-	collision0,17,3,50,21,Head
-	collision1,15,23,40,42,Face
+	collisionex0,Head,polygon,3,3,39,3,39,18,3,18
+	collisionex1,Face,polygon,10,19,39,19,39,37,10,39
+
+	animation0.interval,random,4
+	animation0.pattern0,overlay,1601,0,0,0
+	animation0.pattern1,overlay,1602,100,0,0
+	animation0.pattern2,overlay,-1,50,0,0
 }
+//For some reason when I tried to make the blinking images be only the eye blinking, like the Pinkie one, it became offset.
 
 sakura.tooltips
 {
@@ -69,14 +55,10 @@ sakura.cursor
 {
 mouseup0,Head,system:hand
 mousedown0,Head,system:finger
-mouseup1,Face,system:hand
-mousedown1,Face,system:grip
 }
 
 kero.cursor
 {
 mouseup0,Head,system:hand
 mousedown0,Head,system:finger
-mouseup1,Face,system:hand
-mousedown1,Face,system:grip
 }

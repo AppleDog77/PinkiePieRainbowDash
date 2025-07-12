@@ -3,6 +3,7 @@ OnFirstBoot
 	//If you add variables, make sure to initialize them here!
 	//Note - I haven't added anything about username or pronouns here because it's all handled by the SSP prefs
 	stroke = 0
+	continuousstroke = 0
 	hemisphere = "Northern"
 	LastTalk = ""
 	
@@ -17,7 +18,7 @@ OnInitialize
 	//If you add new variables in updates, I recommend initializing them like so:
 	//if !ISVAR("NewVariable"); NewVariable = 0
 	//This means that it will only set the new variable if the user doesn't already have it, so that their variables don't get overwritten
-	
+	if !ISVAR("continuousstroke"); continuousstroke = 0
 	if reference0 != "reload" //For things you want to reset EXCEPT when just reloading; a convenience for you the dev, basically
 	{
 		LastTalk = ""
@@ -52,6 +53,14 @@ OnBoot
 		
 		"\0\s[0]Yay, it's my birthday!\w8\1\s[10]I'll give you a present! How about a new pet, like the %(pets)? Cool, huh?\e"
 	}
+	elseif _today == "10/31" //You can add whatever cool dates you want with more elseifs here
+	{
+		"\0\s[0]Ooo, it's Nightmare Night! Teehee...\e"
+
+		"\0\s[0]Hehe, it's Nightmare Night! You know what that means...\1\s[10]What does it mean?\0\s[0]\n\n[half]It means...\w9\w9 spooky movies! Ooh...\e"
+
+		"\0\s[0]Hi, %(username)! What are you going as for Nightmare Night? I'm going as a %(pets) or a %(pokemon)! \1\s[10]I'm going as a character from %(movies)!\e"
+	}
 	else //Normal boot
 	{
 		"\0\s[0]Hi again! So, watcha doing today?\w8\1\s[10]I'm really interested in what you're doing there on the internet.\w8\0\s[0]\n\n[half]Me too! Ooh."
@@ -72,7 +81,7 @@ OnClose
 	"\0\s[0]Aww, goodbye!\w8\1\s[10]Bye for now! Hope to see you again soon!"
 	"\0\s[0]Huh?! Oki-doki-loki, bye!\w8\1\s[10]Aw man! What's the deal?! Oh well, see ya later, alligator!"
 	"\0\s[0]Aww, come on!\w8\1\s[10]Oh well, gotta practice! Bye!"
-	"\0\s[0]You gonna play The Sims? Oi-doki-loki, have fun1 Bye!"
+	"\0\s[0]You gonna play The Sims? Oki-doki-loki, have fun! Bye!"
 	--
 	"\w8\w8\-" //This is what makes the ghost close (after a short pause), do not remove the \- , and MAKE SURE you don't use a \e before this point or it won't work
 }

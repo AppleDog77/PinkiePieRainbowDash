@@ -7,12 +7,12 @@ shiori,yaya.dll
 
 craftman,odie
 craftmanw,Odie
-craftmanurl,https://appledog77.github.io
+craftmanurl,https://ladybug-lane.neocities.org/
 
 sakura.name,Pinkie Pie
 kero.name,Rainbow Dash
 
-icon,pinkie.ico
+icon,icon.ico
 //Zi: descript.txt uses the name of the balloon, while install.txt needs the directory
 
 balloon,MLP Balloon

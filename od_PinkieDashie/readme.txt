@@ -1,6 +1,6 @@
 --PPRD Readme--
 Created by Odie at appledog77.github.io
-My first ever ghost! Welcome to the Pinkie Pie and Rainbow Dash ghost! Pinkie and Dashie chat on your screen and you can pet them on their head and face (by moving the mouse over those areas, not clicking, although you can use the mouse wheel also), or even kiss (double click) them on those two places :P If you double click anywhere else on Pinkie, a menu appears which you can use to hear what's on the duo's mind currently, hear the last thing they said, play a game, have them ask you a question, or ask about their lives. If you double click on Rainbow, you'll get some cool stuff ;) but other than that, you can report a bug or update 'em.
+My first ever ghost! Welcome to the Pinkie Pie and Rainbow Dash ghost! Pinkie and Dashie chat on your screen and you can pet them on their head and face (by moving the mouse over those areas, not clicking, although you can use the mouse wheel also), or even kiss (double click) them on those two places :P If you double click anywhere else on Pinkie, a menu appears which you can use to hear what's on the duo's mind currently, hear the last thing they said, play a game, have them ask you a question, or ask about their lives. If you double click on Rainbow, you'll get some cool stuff ;)
 
 Hotkeys:
 t - talk
@@ -9,7 +9,7 @@ f1 - open readme (this file!)
 
 Credits:
 Desktop-Pony-Team (for Pinkie Pie and Rainbow Dash images; download Desktop Ponies for more ponies!)
-Continous petting minigame by Zichqec! https://zichqec.github.io/s-the-skeleton/
+Continuous petting minigame by Zichqec! https://ukagaka.zichqec.com/
 Thank you! :D
 
 Contact: sleepysloth.turtle025@silomails.com
@@ -31,3 +31,4 @@ Ver 1.5 - Added Humongous Entertainment's series to the games responses, added n
 Ver 1.5-1 - Added more stuff to the envelopes, changed some dialogue, bundled the MLP balloon I made, and changed the homeurl. (Sat, Aug 27, 2023)
 Ver 1.6 - Updated YAYA, added some new minigames, added a new icon by Remul-Lemlem, fixed some dialogue, added a couple stuff to the envelopes, added a new piece of dialogue, and updated the balloon. Also moved from Odie's Ocean. (Thu, Sep 12, 2024)
 Ver 2.0 - Ported to Simplicity Template from GT Ghost Template for more flexibility, and to remove the comments I don't need anymore. Fixed typos and merged the 2 shows envelopes into one. Added some new dialogue, and mostly kept seasons dialogue only for now. Added a sound effect to the menu. Communicate stuff and date and time in the main menu has been removed for now, until I can get it working again. (Mon, May 19, 2025)
+Ver 2.1 - Added blinking animations, finally! Added boot dialogue for Halloween/Nightmare Night, more films and TV shows to respective wordgroups, Spectre custom calibration and responses, fixed icon, changed filenames of kero and sakura menu dics, and put back date and time in menu. Improved the thumbnail, collisions, and right click menu. (Sat, Jul 12, 2025)
